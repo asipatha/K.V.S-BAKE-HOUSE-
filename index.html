@@ -3,1929 +3,1405 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>K.V.S BAK HOUSE</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@300;400;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<title>K.V.S Product - Bakery Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0f0800;
-    --card: #1c1000;
-    --card2: #241500;
-    --accent: #e8820c;
-    --accent2: #ffb347;
-    --gold: #f5c518;
-    --text: #fff8ee;
-    --muted: #b89060;
-    --green: #3dba78;
-    --red: #e05555;
-    --blue: #4da6e8;
-    --border: rgba(232,130,12,0.2);
-    --shadow: 0 8px 32px rgba(0,0,0,0.6);
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Noto Sans Sinhala', sans-serif;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(ellipse at 20% 10%, rgba(232,130,12,0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 80%, rgba(245,197,24,0.05) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-  }
+:root {
+  --bg:#0d1117;--card:rgba(255,255,255,0.055);--card2:rgba(255,255,255,0.04);
+  --accent:#3b82f6;--accent2:#60a5fa;--accent-glow:rgba(59,130,246,0.35);
+  --cyan:#06b6d4;--cyan-glow:rgba(6,182,212,0.3);--gold:#f5c518;
+  --text:#e8edf5;--text2:#f0f4ff;--muted:#6b7fa3;--muted2:#8899bb;
+  --green:#22c55e;--green-glow:rgba(34,197,94,0.25);
+  --red:#ef4444;--red-glow:rgba(239,68,68,0.25);
+  --orange:#f97316;--purple:#a78bfa;
+  --border:rgba(120,160,255,0.12);--border2:rgba(120,160,255,0.22);
+  --glass:rgba(255,255,255,0.06);--glass2:rgba(255,255,255,0.09);
+  --shadow-card:0 4px 24px rgba(0,0,0,0.45),0 1px 0 rgba(255,255,255,0.06) inset;
+  --shadow-blue:0 0 24px rgba(59,130,246,0.18);
+  --radius:16px;--radius-sm:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans','Noto Sans Sinhala',sans-serif;min-height:100vh;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 60% 40% at 15% 15%,rgba(59,130,246,0.12) 0%,transparent 70%),radial-gradient(ellipse 50% 50% at 85% 80%,rgba(6,182,212,0.08) 0%,transparent 60%);pointer-events:none;z-index:0;}
 
-  /* HEADER */
-  .header {
-    background: linear-gradient(135deg, #1c0d00 0%, #2a1500 50%, #1c0d00 100%);
-    border-bottom: 2px solid var(--accent);
-    padding: 16px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.8);
-  }
-  .header-icon { font-size: 32px; }
-  .header h1 {
-    font-family: 'Noto Sans Sinhala', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--accent2);
-    line-height: 1.2;
-  }
-  .header p { font-size: 11px; color: var(--muted); }
+/* HEADER */
+.header{background:rgba(13,17,23,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border2);padding:12px 16px;position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:10px;box-shadow:0 4px 32px rgba(0,0,0,0.5);}
+.header::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),var(--cyan),transparent);opacity:0.6;}
+.header-logo{width:48px;height:48px;flex-shrink:0;border-radius:50%;overflow:hidden;border:2px solid rgba(232,190,80,0.5);box-shadow:0 0 16px rgba(232,190,80,0.3);}
+.header-logo img{width:100%;height:100%;object-fit:cover;}
+.header h1{font-size:15px;font-weight:700;color:var(--text2);line-height:1.2;}
+.header p{font-size:10px;color:var(--muted);}
+.live-badge{display:flex;align-items:center;gap:5px;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.25);border-radius:20px;padding:4px 9px;margin-left:auto;flex-shrink:0;}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:glowPulse 2s infinite;}
+.live-badge span{font-size:9px;color:var(--green);font-weight:700;}
 
-  /* NAV TABS */
-  .nav-tabs {
-    display: flex;
-    overflow-x: auto;
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
-    scrollbar-width: none;
-    position: sticky;
-    top: 72px;
-    z-index: 99;
-  }
-  .nav-tabs::-webkit-scrollbar { display: none; }
-  .tab-btn {
-    flex: none;
-    padding: 12px 16px;
-    background: none;
-    border: none;
-    color: var(--muted);
-    font-family: 'Noto Sans Sinhala', sans-serif;
-    font-size: 12px;
-    cursor: pointer;
-    border-bottom: 3px solid transparent;
-    white-space: nowrap;
-    transition: all 0.2s;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-  }
-  .tab-btn .tab-icon { font-size: 18px; }
-  .tab-btn.active {
-    color: var(--accent2);
-    border-bottom-color: var(--accent);
-    background: rgba(232,130,12,0.08);
-  }
-  .tab-btn:hover { color: var(--text); }
+/* SEARCH BAR */
+.search-bar-wrap{padding:10px 14px 0;position:sticky;top:68px;z-index:98;background:rgba(13,17,23,0.85);backdrop-filter:blur(16px);}
+.search-bar{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.06);border:1px solid var(--border2);border-radius:50px;padding:8px 14px;transition:all 0.2s;}
+.search-bar:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(59,130,246,0.1);}
+.search-bar input{flex:1;background:none;border:none;color:var(--text);font-family:'Noto Sans Sinhala',sans-serif;font-size:13px;outline:none;}
+.search-bar input::placeholder{color:var(--muted);}
+#search-results{background:rgba(13,17,23,0.97);border:1px solid var(--border2);border-radius:var(--radius);margin:6px 14px 0;padding:6px;display:none;max-height:260px;overflow-y:auto;position:relative;z-index:97;}
+.sr-result-item{padding:9px 12px;border-radius:8px;cursor:pointer;font-size:12px;display:flex;justify-content:space-between;align-items:center;transition:background 0.15s;}
+.sr-result-item:hover{background:rgba(59,130,246,0.1);}
+.sr-result-type{font-size:10px;color:var(--muted);background:rgba(255,255,255,0.06);padding:2px 7px;border-radius:10px;}
 
-  /* MAIN */
-  .main { padding: 16px; position: relative; z-index: 1; }
-  .page { display: none; }
-  .page.active { display: block; }
+/* NAV TABS */
+.nav-tabs{display:flex;overflow-x:auto;background:rgba(13,17,23,0.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);scrollbar-width:none;position:sticky;top:116px;z-index:99;padding:0 4px;}
+.nav-tabs::-webkit-scrollbar{display:none;}
+.tab-btn{flex:none;padding:9px 13px;background:none;border:none;color:var(--muted);font-family:'Noto Sans Sinhala',sans-serif;font-size:11px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all 0.25s;display:flex;flex-direction:column;align-items:center;gap:2px;position:relative;}
+.tab-btn .tab-icon{font-size:15px;transition:transform 0.2s;}
+.tab-btn.active{color:var(--accent2);border-bottom-color:var(--accent);}
+.tab-btn.active .tab-icon{transform:scale(1.15);}
+.tab-btn.active::before{content:'';position:absolute;inset:4px 4px 0;background:rgba(59,130,246,0.08);border-radius:8px 8px 0 0;}
 
-  /* DASHBOARD SUMMARY CARDS */
-  .summary-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-  .sum-card {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px;
-    position: relative;
-    overflow: hidden;
-    animation: fadeUp 0.4s ease both;
-  }
-  .sum-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-  }
-  .sum-card.income::before { background: var(--green); }
-  .sum-card.expense::before { background: var(--red); }
-  .sum-card.asset::before { background: var(--blue); }
-  .sum-card.profit::before { background: var(--gold); }
-  .sum-card.liability::before { background: #e08855; }
-  .sum-card.equity::before { background: #a06ee8; }
-  .sum-label { font-size: 10px; color: var(--muted); margin-bottom: 4px; }
-  .sum-val { font-size: 20px; font-weight: 700; }
-  .sum-val.green { color: var(--green); }
-  .sum-val.red { color: var(--red); }
-  .sum-val.blue { color: var(--blue); }
-  .sum-val.gold { color: var(--gold); }
-  .sum-val.orange { color: #e08855; }
-  .sum-val.purple { color: #a06ee8; }
-  .sum-icon { font-size: 24px; position: absolute; right: 12px; top: 12px; opacity: 0.3; }
+/* MAIN */
+.main{padding:12px;position:relative;z-index:1;}
+.page{display:none;}
+.page.active{display:block;animation:pageFadeIn 0.3s ease;}
+@keyframes pageFadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 
-  /* SECTION TITLE */
-  .section-title {
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--accent2);
-    margin: 16px 0 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
+/* GLASS CARD */
+.glass-card,.form-card,.balance-card,.profit-section,.salary-hero,.sr-net-box,.sum-card,.list-item,.stock-table-wrap,.worker-card,.salary-hist-item{background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--border2);border-radius:var(--radius);box-shadow:var(--shadow-card);position:relative;overflow:hidden;}
+.glass-card::before,.form-card::before,.balance-card::before,.profit-section::before,.salary-hero::before,.sum-card::before,.list-item::after,.worker-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);}
 
-  /* FORM CARD */
-  .form-card {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 16px;
-    margin-bottom: 14px;
-    animation: fadeUp 0.3s ease both;
-  }
-  .form-row { margin-bottom: 12px; }
-  .form-row label {
-    display: block;
-    font-size: 11px;
-    color: var(--muted);
-    margin-bottom: 5px;
-  }
-  .form-row input, .form-row select, .form-row textarea {
-    width: 100%;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text);
-    font-family: 'Noto Sans Sinhala', sans-serif;
-    font-size: 14px;
-    padding: 10px 12px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .form-row input:focus, .form-row select:focus {
-    border-color: var(--accent);
-  }
-  .form-row select option { background: #1c1000; }
-  .form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  
-  .btn {
-    width: 100%;
-    padding: 13px;
-    border: none;
-    border-radius: 10px;
-    font-family: 'Noto Sans Sinhala', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .btn-primary {
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color: #000;
-  }
-  .btn-primary:active { transform: scale(0.97); }
-  .btn-danger {
-    background: rgba(224,85,85,0.15);
-    color: var(--red);
-    border: 1px solid rgba(224,85,85,0.3);
-    width: auto;
-    padding: 6px 12px;
-    font-size: 12px;
-  }
+/* SUMMARY GRID */
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.sum-card{padding:14px;animation:fadeUp 0.4s cubic-bezier(0.34,1.56,0.64,1) both;transition:transform 0.2s;}
+.sum-card:active{transform:scale(0.97);}
+.sum-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;border-radius:16px 16px 0 0;}
+.sum-card.income::after{background:linear-gradient(90deg,var(--green),#4ade80);box-shadow:0 0 12px var(--green-glow);}
+.sum-card.expense::after{background:linear-gradient(90deg,var(--red),#f87171);}
+.sum-card.asset::after{background:linear-gradient(90deg,var(--accent),var(--cyan));}
+.sum-card.profit::after{background:linear-gradient(90deg,var(--gold),#fde68a);}
+.sum-card.liability::after{background:linear-gradient(90deg,var(--orange),#fb923c);}
+.sum-card.equity::after{background:linear-gradient(90deg,var(--purple),#c4b5fd);}
+.sum-label{font-size:10px;color:var(--muted2);margin-bottom:4px;letter-spacing:0.3px;}
+.sum-val{font-size:17px;font-weight:700;letter-spacing:-0.5px;}
+.sum-val.green{color:var(--green);text-shadow:0 0 20px var(--green-glow);}
+.sum-val.red{color:var(--red);}
+.sum-val.blue{color:var(--accent2);}
+.sum-val.gold{color:var(--gold);}
+.sum-val.orange{color:var(--orange);}
+.sum-val.purple{color:var(--purple);}
+.sum-icon{font-size:20px;position:absolute;right:10px;top:12px;opacity:0.18;}
 
-  /* LIST ITEMS */
-  .list-item {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 12px 14px;
-    margin-bottom: 8px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    animation: fadeUp 0.3s ease both;
-    position: relative;
-    overflow: hidden;
-  }
-  .list-item::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 3px;
-    background: var(--accent);
-  }
-  .list-item.income-item::before { background: var(--green); }
-  .list-item.expense-item::before { background: var(--red); }
-  .list-item.asset-item::before { background: var(--blue); }
-  .list-item.liability-item::before { background: #e08855; }
-  .list-item.equity-item::before { background: #a06ee8; }
-  .list-item.raw-item::before { background: #4dd9ac; }
-  .list-item.product-item::before { background: var(--gold); }
+/* SECTION TITLE */
+.section-title{font-size:11px;font-weight:700;color:var(--muted2);margin:16px 0 10px;display:flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:1px;}
+.section-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border2),transparent);}
 
-  .item-icon { font-size: 22px; flex-shrink: 0; }
-  .item-info { flex: 1; min-width: 0; }
-  .item-name { font-size: 14px; font-weight: 600; color: var(--text); }
-  .item-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
-  .item-amount { font-size: 15px; font-weight: 700; flex-shrink: 0; }
-  .item-amount.green { color: var(--green); }
-  .item-amount.red { color: var(--red); }
-  .item-amount.blue { color: var(--blue); }
-  .item-amount.orange { color: #e08855; }
-  .item-amount.purple { color: #a06ee8; }
-  .item-amount.teal { color: #4dd9ac; }
-  .item-amount.gold { color: var(--gold); }
+/* FORM */
+.form-card{padding:15px;margin-bottom:14px;animation:fadeUp 0.3s ease both;}
+.form-row{margin-bottom:11px;}
+.form-row label{display:block;font-size:11px;color:var(--muted2);margin-bottom:4px;letter-spacing:0.3px;}
+.form-row input,.form-row select,.form-row textarea{width:100%;background:rgba(255,255,255,0.06);border:1px solid var(--border2);border-radius:var(--radius-sm);color:var(--text2);font-family:'Noto Sans Sinhala',sans-serif;font-size:13px;padding:10px 12px;outline:none;transition:all 0.2s;box-shadow:0 2px 8px rgba(0,0,0,0.2) inset;}
+.form-row input:focus,.form-row select:focus{border-color:var(--accent);background:rgba(59,130,246,0.08);box-shadow:0 0 0 3px rgba(59,130,246,0.12),0 2px 8px rgba(0,0,0,0.2) inset;}
+.form-row select option{background:#151e2a;}
+.form-row textarea{resize:vertical;min-height:70px;}
+.form-2col{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.form-3col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
 
-  .item-actions { display: flex; gap: 6px; margin-top: 6px; }
+/* BUTTONS */
+.btn{width:100%;padding:12px;border:none;border-radius:var(--radius-sm);font-family:'Noto Sans Sinhala',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s cubic-bezier(0.34,1.56,0.64,1);position:relative;overflow:hidden;}
+.btn::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,0.1) 0%,transparent 100%);pointer-events:none;}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#2563eb);color:#fff;box-shadow:0 4px 20px rgba(59,130,246,0.4);}
+.btn-primary:hover{box-shadow:0 6px 28px rgba(59,130,246,0.55);transform:translateY(-1px);}
+.btn-primary:active{transform:scale(0.97);}
+.btn-green{background:linear-gradient(135deg,var(--green),#16a34a);color:#fff;box-shadow:0 4px 16px rgba(34,197,94,0.35);}
+.btn-danger{background:rgba(239,68,68,0.12);color:var(--red);border:1px solid rgba(239,68,68,0.25);width:auto;padding:5px 11px;font-size:11px;}
+.btn-sm{width:auto;padding:6px 14px;font-size:12px;}
 
-  /* STOCK BADGE */
-  .stock-badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 20px;
-    font-size: 10px;
-    font-weight: 700;
-  }
-  .stock-ok { background: rgba(61,186,120,0.15); color: var(--green); }
-  .stock-low { background: rgba(224,85,85,0.15); color: var(--red); }
-  .stock-med { background: rgba(245,197,24,0.15); color: var(--gold); }
+/* TOGGLE */
+.toggle-form-btn{width:100%;padding:11px;background:rgba(59,130,246,0.06);border:1px dashed rgba(59,130,246,0.3);border-radius:var(--radius-sm);color:var(--accent2);font-family:'Noto Sans Sinhala',sans-serif;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:12px;transition:all 0.2s;}
+.toggle-form-btn:hover{background:rgba(59,130,246,0.12);border-style:solid;box-shadow:0 0 16px rgba(59,130,246,0.15);}
+.collapsible{display:none;}
+.collapsible.open{display:block;animation:fadeUp 0.25s ease;}
 
-  /* PROFIT BAR */
-  .profit-section {
-    background: linear-gradient(135deg, rgba(61,186,120,0.1), rgba(245,197,24,0.05));
-    border: 1px solid rgba(61,186,120,0.3);
-    border-radius: 14px;
-    padding: 16px;
-    margin-bottom: 14px;
-  }
-  .profit-row { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; }
-  .profit-divider { border: none; border-top: 1px dashed var(--border); margin: 10px 0; }
-  .profit-total { font-size: 16px; font-weight: 700; }
+/* LIST ITEMS */
+.list-item{padding:12px 13px;margin-bottom:8px;display:flex;align-items:center;gap:9px;animation:fadeUp 0.3s ease both;transition:border-color 0.2s,box-shadow 0.2s;}
+.list-item:hover{border-color:var(--border2);box-shadow:var(--shadow-blue);}
+.list-item::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:0 3px 3px 0;}
+.list-item.income-item::before{background:var(--green);box-shadow:0 0 8px var(--green-glow);}
+.list-item.expense-item::before{background:var(--red);}
+.list-item.asset-item::before{background:var(--accent);}
+.list-item.liability-item::before{background:var(--orange);}
+.list-item.equity-item::before{background:var(--purple);}
+.list-item.raw-item::before{background:var(--cyan);}
+.list-item.product-item::before{background:var(--gold);}
+.list-item.sale-item::before{background:var(--green);}
+.list-item.return-item::before{background:var(--red);}
+.list-item.credit-item::before{background:var(--orange);}
+.list-item.customer-item::before{background:var(--cyan);}
+.item-icon{font-size:18px;flex-shrink:0;width:36px;height:36px;background:rgba(255,255,255,0.06);border-radius:9px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.07);}
+.item-info{flex:1;min-width:0;}
+.item-name{font-size:13px;font-weight:600;color:var(--text2);}
+.item-sub{font-size:11px;color:var(--muted);margin-top:2px;}
+.item-amount{font-size:13px;font-weight:700;flex-shrink:0;letter-spacing:-0.3px;}
+.item-amount.green{color:var(--green);}
+.item-amount.red{color:var(--red);}
+.item-amount.blue{color:var(--accent2);}
+.item-amount.orange{color:var(--orange);}
+.item-amount.purple{color:var(--purple);}
+.item-amount.teal{color:var(--cyan);}
+.item-amount.gold{color:var(--gold);}
+.item-actions{display:flex;gap:5px;margin-top:5px;flex-wrap:wrap;}
 
-  /* BALANCE SHEET */
-  .balance-card {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 14px;
-    margin-bottom: 10px;
-  }
-  .balance-title {
-    font-size: 12px;
-    font-weight: 700;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-  }
-  .balance-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 6px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    font-size: 13px;
-  }
-  .balance-row:last-child { border-bottom: none; }
-  .balance-total {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0 0;
-    font-size: 15px;
-    font-weight: 700;
-    border-top: 2px solid var(--border);
-    margin-top: 4px;
-  }
+/* BADGES */
+.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;}
+.stock-ok{background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.2);}
+.stock-low{background:rgba(239,68,68,0.12);color:var(--red);border:1px solid rgba(239,68,68,0.2);}
+.stock-med{background:rgba(245,197,24,0.12);color:var(--gold);border:1px solid rgba(245,197,24,0.2);}
+.badge-sale{background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.2);}
+.badge-return{background:rgba(239,68,68,0.12);color:var(--red);border:1px solid rgba(239,68,68,0.2);}
+.badge-credit{background:rgba(249,115,22,0.15);color:var(--orange);border:1px solid rgba(249,115,22,0.25);}
+.badge-paid{background:rgba(34,197,94,0.12);color:var(--green);border:1px solid rgba(34,197,94,0.2);}
+.badge-pending{background:rgba(245,197,24,0.12);color:var(--gold);border:1px solid rgba(245,197,24,0.2);}
+.badge-overdue{background:rgba(239,68,68,0.12);color:var(--red);border:1px solid rgba(239,68,68,0.2);}
 
-  /* EMPTY STATE */
-  .empty-state {
-    text-align: center;
-    padding: 32px 16px;
-    color: var(--muted);
-  }
-  .empty-state .empty-icon { font-size: 40px; margin-bottom: 10px; opacity: 0.5; }
-  .empty-state p { font-size: 13px; }
+/* PROGRESS / BAR */
+.bar-wrap{background:rgba(255,255,255,0.06);border-radius:6px;height:6px;margin:8px 0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.3) inset;}
+.bar{height:100%;border-radius:6px;transition:width 0.8s cubic-bezier(0.34,1.56,0.64,1);}
+.bar-green{background:linear-gradient(90deg,var(--green),#4ade80);box-shadow:0 0 8px rgba(34,197,94,0.5);}
+.bar-blue{background:linear-gradient(90deg,var(--accent),var(--cyan));box-shadow:0 0 8px rgba(59,130,246,0.5);}
+.bar-gold{background:linear-gradient(90deg,var(--gold),#fde68a);box-shadow:0 0 8px rgba(245,197,24,0.5);}
+.bar-red{background:linear-gradient(90deg,var(--red),#f87171);}
+.bar-purple{background:linear-gradient(90deg,var(--purple),#c4b5fd);}
 
-  /* DATE FILTER */
-  .filter-row {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 12px;
-    align-items: center;
-  }
-  .filter-row input {
-    flex: 1;
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text);
-    font-family: 'Noto Sans Sinhala', sans-serif;
-    font-size: 13px;
-    padding: 8px 10px;
-    outline: none;
-  }
-  .filter-label { font-size: 11px; color: var(--muted); white-space: nowrap; }
+/* TARGET PROGRESS */
+.target-box{background:var(--glass);border:1px solid var(--border2);border-radius:var(--radius);padding:14px;margin-bottom:10px;box-shadow:var(--shadow-card);position:relative;overflow:hidden;}
+.target-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);}
+.target-pct{font-size:22px;font-weight:800;letter-spacing:-1px;}
+.target-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
 
-  /* TOGGLE FORM */
-  .toggle-form-btn {
-    width: 100%;
-    padding: 11px;
-    background: rgba(232,130,12,0.1);
-    border: 1px dashed var(--accent);
-    border-radius: 10px;
-    color: var(--accent2);
-    font-family: 'Noto Sans Sinhala', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-bottom: 12px;
-    transition: all 0.2s;
-  }
-  .toggle-form-btn:hover { background: rgba(232,130,12,0.2); }
-  .collapsible { display: none; }
-  .collapsible.open { display: block; }
+/* CHART */
+.chart-container{background:var(--glass);border:1px solid var(--border2);border-radius:var(--radius);padding:14px;margin-bottom:14px;box-shadow:var(--shadow-card);}
+.chart-bars{display:flex;align-items:flex-end;gap:6px;height:120px;padding:0 4px;}
+.chart-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;}
+.chart-bar-inner{width:100%;border-radius:4px 4px 0 0;min-height:4px;transition:height 0.6s cubic-bezier(0.34,1.56,0.64,1);}
+.chart-label{font-size:9px;color:var(--muted);text-align:center;}
+.chart-val{font-size:8px;color:var(--muted2);text-align:center;}
+.chart-legend{display:flex;gap:12px;margin-top:10px;justify-content:center;}
+.chart-legend-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted2);}
+.chart-legend-dot{width:8px;height:8px;border-radius:50%;}
 
-  /* SALARY SPECIAL STYLES */
-  .salary-hero {
-    background: linear-gradient(135deg, rgba(245,197,24,0.12), rgba(232,130,12,0.08));
-    border: 1px solid rgba(245,197,24,0.3);
-    border-radius: 16px;
-    padding: 18px;
-    margin-bottom: 14px;
-    text-align: center;
-  }
-  .salary-pool-label { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
-  .salary-pool-val { font-size: 32px; font-weight: 700; color: var(--gold); margin-bottom: 2px; }
-  .salary-pool-sub { font-size: 11px; color: var(--muted); }
+/* TABLES */
+.stock-table{width:100%;border-collapse:collapse;}
+.stock-table th{background:rgba(59,130,246,0.08);color:var(--muted2);font-size:10px;font-weight:700;padding:8px 9px;text-align:left;border-bottom:1px solid var(--border2);text-transform:uppercase;letter-spacing:0.8px;}
+.stock-table td{padding:9px 9px;font-size:12px;border-bottom:1px solid rgba(255,255,255,0.04);vertical-align:middle;color:var(--text);}
+.stock-table tr:last-child td{border-bottom:none;}
+.stock-table tr:hover td{background:rgba(59,130,246,0.04);}
+.stock-table-wrap{overflow:hidden;margin-bottom:14px;}
 
-  .worker-card {
-    border-radius: 14px;
-    padding: 16px;
-    margin-bottom: 10px;
-    border: 1px solid var(--border);
-    animation: fadeUp 0.3s ease both;
-    position: relative;
-    overflow: hidden;
-  }
-  .worker-card.chief {
-    background: linear-gradient(135deg, rgba(245,197,24,0.1), rgba(232,130,12,0.06));
-    border-color: rgba(245,197,24,0.4);
-  }
-  .worker-card.helper {
-    background: linear-gradient(135deg, rgba(77,166,232,0.08), rgba(77,166,232,0.03));
-    border-color: rgba(77,166,232,0.3);
-  }
-  .worker-card.extra {
-    background: linear-gradient(135deg, rgba(160,110,232,0.08), rgba(160,110,232,0.03));
-    border-color: rgba(160,110,232,0.3);
-  }
-  .worker-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 10px;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  .badge-chief { background: rgba(245,197,24,0.2); color: var(--gold); }
-  .badge-helper { background: rgba(77,166,232,0.2); color: var(--blue); }
-  .badge-extra { background: rgba(160,110,232,0.2); color: #a06ee8; }
+/* SALARY */
+.salary-hero{padding:18px;margin-bottom:12px;text-align:center;}
+.salary-hero::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--cyan),var(--accent));animation:shimmer 3s ease-in-out infinite;}
+@keyframes shimmer{0%,100%{opacity:0.6}50%{opacity:1}}
+.salary-pool-label{font-size:10px;color:var(--muted2);margin-bottom:5px;letter-spacing:1px;text-transform:uppercase;}
+.salary-pool-val{font-size:28px;font-weight:700;color:var(--text2);margin-bottom:3px;letter-spacing:-1px;}
+.salary-pool-sub{font-size:12px;color:var(--muted2);}
+.salary-pool-sub strong{color:var(--accent2);}
+.worker-card{padding:14px;margin-bottom:10px;transition:box-shadow 0.2s;}
+.worker-card.chief{background:linear-gradient(135deg,rgba(245,197,24,0.07),rgba(59,130,246,0.04));border-color:rgba(245,197,24,0.25);}
+.worker-card.helper{background:linear-gradient(135deg,rgba(59,130,246,0.07),rgba(6,182,212,0.04));border-color:rgba(59,130,246,0.2);}
+.worker-card.extra{background:linear-gradient(135deg,rgba(167,139,250,0.07),rgba(59,130,246,0.03));border-color:rgba(167,139,250,0.2);}
+.worker-badge{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;border-radius:20px;font-size:10px;font-weight:700;margin-bottom:8px;}
+.badge-chief{background:rgba(245,197,24,0.15);color:var(--gold);border:1px solid rgba(245,197,24,0.2);}
+.badge-helper{background:rgba(59,130,246,0.15);color:var(--accent2);border:1px solid rgba(59,130,246,0.2);}
+.badge-extra-w{background:rgba(167,139,250,0.15);color:var(--purple);border:1px solid rgba(167,139,250,0.2);}
+.worker-name-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.worker-avatar{width:40px;height:40px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.avatar-chief{background:linear-gradient(135deg,rgba(245,197,24,0.25),rgba(245,197,24,0.1));border:1px solid rgba(245,197,24,0.2);}
+.avatar-helper{background:linear-gradient(135deg,rgba(59,130,246,0.25),rgba(59,130,246,0.1));border:1px solid rgba(59,130,246,0.2);}
+.avatar-extra{background:linear-gradient(135deg,rgba(167,139,250,0.25),rgba(167,139,250,0.1));border:1px solid rgba(167,139,250,0.2);}
+.worker-info{flex:1;}
+.worker-name-text{font-size:14px;font-weight:700;color:var(--text2);}
+.worker-role{font-size:11px;color:var(--muted);}
+.worker-pct{font-size:20px;font-weight:800;letter-spacing:-1px;}
+.worker-pct.chief-color{color:var(--gold);}
+.worker-pct.helper-color{color:var(--accent2);}
+.worker-pct.extra-color{color:var(--purple);}
+.worker-salary-amount{display:flex;justify-content:space-between;align-items:center;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.06);}
+.worker-salary-label{font-size:11px;color:var(--muted2);}
+.worker-salary-val{font-size:17px;font-weight:700;letter-spacing:-0.5px;}
+.name-input-row{display:flex;gap:7px;align-items:center;margin-bottom:9px;}
+.name-input-row input{flex:1;background:rgba(255,255,255,0.05);border:1px solid var(--border2);border-radius:var(--radius-sm);color:var(--text);font-family:'Noto Sans Sinhala',sans-serif;font-size:12px;padding:8px 10px;outline:none;transition:all 0.2s;}
+.save-name-btn{padding:8px 12px;background:linear-gradient(135deg,var(--accent),#2563eb);border:none;border-radius:var(--radius-sm);color:#fff;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap;}
+.salary-hist-item{padding:13px 15px;margin-bottom:8px;animation:fadeUp 0.3s ease both;}
+.salary-hist-item::after{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--accent),var(--cyan));border-radius:0 2px 2px 0;}
+.salary-hist-header{display:flex;justify-content:space-between;margin-bottom:6px;font-weight:700;font-size:13px;color:var(--text2);}
+.salary-hist-row{display:flex;justify-content:space-between;color:var(--muted2);padding:2px 0;font-size:12px;border-bottom:1px solid rgba(255,255,255,0.03);}
+.salary-hist-row:last-child{border-bottom:none;}
 
-  .worker-name-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-  .worker-avatar {
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-  .avatar-chief { background: rgba(245,197,24,0.2); }
-  .avatar-helper { background: rgba(77,166,232,0.2); }
-  .avatar-extra { background: rgba(160,110,232,0.2); }
+/* SALES/RETURNS */
+.sr-type-toggle{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;}
+.sr-type-btn{padding:12px 8px;border:1px solid var(--border2);border-radius:var(--radius);background:var(--glass);backdrop-filter:blur(12px);color:var(--muted);font-family:'Noto Sans Sinhala',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.25s;text-align:center;}
+.sr-type-btn.sale-active{background:linear-gradient(135deg,rgba(34,197,94,0.15),rgba(34,197,94,0.06));border-color:rgba(34,197,94,0.4);color:var(--green);box-shadow:0 0 20px rgba(34,197,94,0.12);}
+.sr-type-btn.return-active{background:linear-gradient(135deg,rgba(239,68,68,0.15),rgba(239,68,68,0.06));border-color:rgba(239,68,68,0.4);color:var(--red);}
+.sr-type-icon{font-size:20px;display:block;margin-bottom:3px;}
+.sr-filter-pills{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;}
+.sr-filter-pill{padding:4px 11px;border-radius:20px;border:1px solid var(--border2);background:var(--glass);color:var(--muted2);font-size:11px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'Noto Sans Sinhala',sans-serif;}
+.pill-all{background:rgba(59,130,246,0.15);border-color:rgba(59,130,246,0.35);color:var(--accent2);}
+.pill-sale{background:rgba(34,197,94,0.12);border-color:rgba(34,197,94,0.3);color:var(--green);}
+.pill-return{background:rgba(239,68,68,0.12);border-color:rgba(239,68,68,0.3);color:var(--red);}
+.sr-net-box{padding:14px;margin-bottom:14px;}
+.sr-net-box::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),var(--cyan),var(--accent));}
+.sr-net-row{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;}
+.sr-net-total{display:flex;justify-content:space-between;font-size:16px;font-weight:800;padding-top:8px;margin-top:6px;border-top:1px solid var(--border2);}
 
-  .worker-info { flex: 1; }
-  .worker-name-text { font-size: 15px; font-weight: 700; }
-  .worker-role { font-size: 11px; color: var(--muted); }
-  .worker-pct { font-size: 22px; font-weight: 700; text-align: right; }
-  .worker-pct.chief-color { color: var(--gold); }
-  .worker-pct.helper-color { color: var(--blue); }
-  .worker-pct.extra-color { color: #a06ee8; }
+/* PILL NAV */
+.neo-pill-nav{display:flex;background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:50px;padding:4px;margin-bottom:14px;}
+.neo-pill-btn{flex:1;padding:8px 10px;background:none;border:none;border-radius:50px;color:var(--muted);font-family:'Noto Sans Sinhala',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.25s;text-align:center;}
+.neo-pill-btn.active{background:linear-gradient(135deg,var(--accent),var(--cyan));color:#fff;box-shadow:0 4px 16px rgba(59,130,246,0.4);}
 
-  .salary-bar-wrap { background: rgba(255,255,255,0.06); border-radius: 6px; height: 8px; margin: 8px 0; overflow: hidden; }
-  .salary-bar { height: 100%; border-radius: 6px; transition: width 0.6s ease; }
-  .bar-chief { background: linear-gradient(90deg, var(--gold), #ffda44); }
-  .bar-helper { background: linear-gradient(90deg, var(--blue), #7dc8f5); }
-  .bar-extra { background: linear-gradient(90deg, #a06ee8, #c49af5); }
+/* FILTER ROW */
+.filter-row{display:flex;gap:8px;margin-bottom:12px;align-items:center;}
+.filter-row input,.filter-row select{flex:1;background:var(--glass);border:1px solid var(--border2);border-radius:var(--radius-sm);color:var(--text);font-family:'Noto Sans Sinhala',sans-serif;font-size:12px;padding:8px 10px;outline:none;backdrop-filter:blur(8px);}
+.filter-label{font-size:11px;color:var(--muted2);white-space:nowrap;}
 
-  .worker-salary-amount {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-top: 8px; padding-top: 8px;
-    border-top: 1px dashed rgba(255,255,255,0.08);
-  }
-  .worker-salary-label { font-size: 11px; color: var(--muted); }
-  .worker-salary-val { font-size: 18px; font-weight: 700; }
+/* MONTH SELECTOR */
+.month-selector{display:flex;gap:8px;margin-bottom:12px;}
+.month-selector select,.month-selector input{flex:1;background:var(--glass);border:1px solid var(--border2);border-radius:var(--radius-sm);color:var(--text);font-family:'Noto Sans Sinhala',sans-serif;font-size:13px;padding:9px 10px;outline:none;}
 
-  .name-input-row {
-    display: flex; gap: 8px; align-items: center; margin-bottom: 10px;
-  }
-  .name-input-row input {
-    flex: 1;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text);
-    font-family: 'Noto Sans Sinhala', sans-serif;
-    font-size: 13px;
-    padding: 8px 10px;
-    outline: none;
-  }
-  .name-input-row input:focus { border-color: var(--accent); }
-  .save-name-btn {
-    padding: 8px 14px;
-    background: rgba(232,130,12,0.2);
-    border: 1px solid var(--accent);
-    border-radius: 8px;
-    color: var(--accent2);
-    font-size: 12px;
-    cursor: pointer;
-    white-space: nowrap;
-  }
+/* REPORTS */
+.balance-card{padding:13px;margin-bottom:10px;}
+.balance-title{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:9px;}
+.balance-row{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px;}
+.balance-row:last-child{border-bottom:none;}
+.balance-total{display:flex;justify-content:space-between;padding:9px 0 0;font-size:13px;font-weight:700;border-top:1px solid var(--border2);margin-top:3px;}
+.profit-section{padding:15px;margin-bottom:13px;}
+.profit-row{display:flex;justify-content:space-between;margin-bottom:7px;font-size:13px;}
+.profit-divider{border:none;border-top:1px solid rgba(255,255,255,0.06);margin:9px 0;}
+.profit-total{font-size:14px;font-weight:700;}
+.report-period{background:var(--glass);backdrop-filter:blur(12px);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:10px 13px;margin-bottom:12px;font-size:12px;color:var(--muted2);display:flex;justify-content:space-between;box-shadow:var(--shadow-card);}
 
-  /* STOCK REPORT TABLE */
-  .stock-table { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
-  .stock-table th {
-    background: rgba(232,130,12,0.15);
-    color: var(--accent2);
-    font-size: 11px;
-    padding: 8px 10px;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
-  }
-  .stock-table td {
-    padding: 9px 10px;
-    font-size: 12px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    vertical-align: middle;
-  }
-  .stock-table tr:last-child td { border-bottom: none; }
-  .stock-table tr:hover td { background: rgba(255,255,255,0.02); }
-  .stock-table-wrap {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 14px;
-  }
+/* CREDIT SALES */
+.credit-summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px;}
+.credit-card{background:var(--glass);border:1px solid var(--border2);border-radius:var(--radius);padding:12px;text-align:center;box-shadow:var(--shadow-card);position:relative;overflow:hidden;}
+.credit-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);}
+.credit-val{font-size:16px;font-weight:700;margin:4px 0;}
+.credit-lbl{font-size:10px;color:var(--muted);}
 
-  /* PROGRESS RING for stock */
-  .qty-pill {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 700;
-  }
+/* CUSTOMERS */
+.customer-card{background:var(--glass);border:1px solid var(--border2);border-radius:var(--radius);padding:14px;margin-bottom:10px;box-shadow:var(--shadow-card);position:relative;overflow:hidden;animation:fadeUp 0.3s ease both;}
+.customer-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);}
+.customer-card::after{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--cyan),var(--accent));border-radius:0 2px 2px 0;}
+.cust-header{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.cust-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,rgba(6,182,212,0.25),rgba(59,130,246,0.15));border:1px solid rgba(6,182,212,0.3);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.cust-name{font-size:14px;font-weight:700;color:var(--text2);}
+.cust-sub{font-size:11px;color:var(--muted);}
+.cust-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:8px;}
+.cust-stat{background:rgba(255,255,255,0.04);border-radius:8px;padding:7px;text-align:center;}
+.cust-stat-val{font-size:13px;font-weight:700;}
+.cust-stat-lbl{font-size:9px;color:var(--muted);}
 
-  /* MONTH SELECTOR */
-  .month-selector {
-    display: flex; gap: 8px; margin-bottom: 14px;
-  }
-  .month-selector select, .month-selector input {
-    flex: 1;
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text);
-    font-family: 'Noto Sans Sinhala', sans-serif;
-    font-size: 13px;
-    padding: 9px 10px;
-    outline: none;
-  }
+/* RECIPE */
+.recipe-card{background:var(--glass);border:1px solid var(--border2);border-radius:var(--radius);padding:14px;margin-bottom:10px;box-shadow:var(--shadow-card);position:relative;overflow:hidden;animation:fadeUp 0.3s ease both;}
+.recipe-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);}
+.recipe-ingredient{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);font-size:12px;}
+.recipe-ingredient:last-child{border-bottom:none;}
 
-  /* SALARY HISTORY */
-  .salary-hist-item {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 14px;
-    margin-bottom: 8px;
-    font-size: 12px;
-  }
-  .salary-hist-header { display: flex; justify-content: space-between; margin-bottom: 6px; font-weight: 700; font-size: 13px; }
-  .salary-hist-row { display: flex; justify-content: space-between; color: var(--muted); padding: 2px 0; }
+/* SUPPLIERS */
+.supplier-card{background:var(--glass);border:1px solid var(--border2);border-radius:var(--radius);padding:14px;margin-bottom:10px;box-shadow:var(--shadow-card);position:relative;overflow:hidden;animation:fadeUp 0.3s ease both;}
+.supplier-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);}
+.supplier-card::after{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--purple),var(--accent));border-radius:0 2px 2px 0;}
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+/* NOTIFICATION */
+.notif-item{background:var(--glass);border:1px solid var(--border2);border-radius:var(--radius-sm);padding:11px 13px;margin-bottom:7px;display:flex;gap:10px;align-items:flex-start;box-shadow:var(--shadow-card);animation:fadeUp 0.3s ease both;}
+.notif-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
+.notif-text{flex:1;font-size:12px;line-height:1.5;}
+.notif-time{font-size:10px;color:var(--muted);white-space:nowrap;}
+.notif-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:4px;}
 
-  /* LOW STOCK WARNING */
-  .warning-banner {
-    background: rgba(224,85,85,0.12);
-    border: 1px solid rgba(224,85,85,0.3);
-    border-radius: 10px;
-    padding: 10px 14px;
-    font-size: 12px;
-    color: var(--red);
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+/* PRINT STYLES */
+@media print {
+  .header,.nav-tabs,.search-bar-wrap,.toggle-form-btn,.btn,.item-actions,.live-badge{display:none!important;}
+  body{background:#fff!important;color:#000!important;}
+  .page{display:block!important;}
+  .glass-card,.form-card,.balance-card,.profit-section,.salary-hero,.sr-net-box,.sum-card,.list-item,.stock-table-wrap,.worker-card,.salary-hist-item,.chart-container,.target-box,.credit-card,.customer-card,.recipe-card,.supplier-card{background:#f5f5f5!important;border:1px solid #ddd!important;box-shadow:none!important;backdrop-filter:none!important;}
+  .sum-val,.item-amount,.worker-pct,.worker-salary-val,.salary-pool-val{color:#222!important;text-shadow:none!important;}
+  .section-title,.balance-title{color:#555!important;}
+  .sum-label,.item-sub,.worker-role,.salary-pool-label,.muted,.muted2{color:#777!important;}
+}
 
-  /* REPORT */
-  .report-period {
-    background: var(--card2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 10px 14px;
-    margin-bottom: 12px;
-    font-size: 12px;
-    color: var(--muted);
-    display: flex;
-    justify-content: space-between;
-  }
+/* EMPTY STATE */
+.empty-state{text-align:center;padding:32px 14px;color:var(--muted);}
+.empty-state .empty-icon{font-size:38px;margin-bottom:9px;opacity:0.35;display:block;}
+.empty-state p{font-size:12px;}
+
+/* WARNING BANNER */
+.warning-banner{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:var(--radius-sm);padding:10px 13px;font-size:12px;color:var(--red);margin-bottom:12px;display:flex;align-items:center;gap:8px;backdrop-filter:blur(8px);}
+
+/* WHATSAPP BTN */
+.wa-btn{background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;border:none;border-radius:var(--radius-sm);padding:11px 16px;font-family:'Noto Sans Sinhala',sans-serif;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all 0.2s;box-shadow:0 4px 16px rgba(37,211,102,0.3);width:100%;}
+.wa-btn:hover{box-shadow:0 6px 22px rgba(37,211,102,0.45);transform:translateY(-1px);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes glowPulse{0%,100%{box-shadow:0 0 8px rgba(34,197,94,0.4)}50%{box-shadow:0 0 18px rgba(34,197,94,0.7)}}
 </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <div class="header">
-  <div class="header-icon">🍞</div>
-  <div>
-    <h1>බේකරි කළමනාකරණ පද්ධතිය</h1>
-    <p>Bakery Financial & Inventory Management</p>
+  <div class="header-logo"><img src="" id="kvs-logo" alt="KVS"></div>
+  <div style="flex:1">
+    <h1>K.V.S Product</h1>
+    <p>Harasbadda · බේකරි කළමනාකරණ පද්ධතිය</p>
   </div>
+  <div class="live-badge"><span class="live-dot"></span><span>LIVE</span></div>
 </div>
 
-<div class="nav-tabs">
-  <button class="tab-btn active" onclick="showPage('dashboard')">
-    <span class="tab-icon">📊</span>සාරාංශය
-  </button>
-  <button class="tab-btn" onclick="showPage('income')">
-    <span class="tab-icon">💰</span>ආදායම්
-  </button>
-  <button class="tab-btn" onclick="showPage('expense')">
-    <span class="tab-icon">💸</span>වියදම්
-  </button>
-  <button class="tab-btn" onclick="showPage('inventory')">
-    <span class="tab-icon">📦</span>තොග
-  </button>
-  <button class="tab-btn" onclick="showPage('assets')">
-    <span class="tab-icon">🏦</span>වත්කම්
-  </button>
-  <button class="tab-btn" onclick="showPage('liabilities')">
-    <span class="tab-icon">📋</span>වගකීම්
-  </button>
-  <button class="tab-btn" onclick="showPage('equity')">
-    <span class="tab-icon">👤</span>හිමිකම්
-  </button>
-  <button class="tab-btn" onclick="showPage('reports')">
-    <span class="tab-icon">📈</span>වාර්තා
-  </button>
-  <button class="tab-btn" onclick="showPage('rawreport')">
-    <span class="tab-icon">🌾</span>අමු වාර්තාව
-  </button>
-  <button class="tab-btn" onclick="showPage('prodreport')">
-    <span class="tab-icon">🥐</span>නිමි වාර්තාව
-  </button>
-  <button class="tab-btn" onclick="showPage('salary')">
-    <span class="tab-icon">👷</span>වැටුප්
-  </button>
+<!-- SEARCH -->
+<div class="search-bar-wrap">
+  <div class="search-bar">
+    <span style="font-size:14px;color:var(--muted)">🔍</span>
+    <input type="text" id="global-search" placeholder="ඕනෑම දෙයක් සොයන්න..." oninput="globalSearch(this.value)">
+    <span style="font-size:12px;color:var(--muted)" id="search-clear" onclick="clearSearch()" style="cursor:pointer">✕</span>
+  </div>
+  <div id="search-results"></div>
+</div>
+
+<!-- NAV TABS -->
+<div class="nav-tabs" id="main-nav">
+  <button class="tab-btn active" onclick="showPage('dashboard',this)"><span class="tab-icon">📊</span>සාරාංශය</button>
+  <button class="tab-btn" onclick="showPage('income',this)"><span class="tab-icon">💰</span>ආදායම්</button>
+  <button class="tab-btn" onclick="showPage('expense',this)"><span class="tab-icon">💸</span>වියදම්</button>
+  <button class="tab-btn" onclick="showPage('inventory',this)"><span class="tab-icon">📦</span>තොග</button>
+  <button class="tab-btn" onclick="showPage('salesreturn',this)"><span class="tab-icon">🛒</span>විකිණීම්</button>
+  <button class="tab-btn" onclick="showPage('credit',this)"><span class="tab-icon">💳</span>ණය</button>
+  <button class="tab-btn" onclick="showPage('customers',this)"><span class="tab-icon">👥</span>ගනුකරු</button>
+  <button class="tab-btn" onclick="showPage('recipes',this)"><span class="tab-icon">📋</span>Recipes</button>
+  <button class="tab-btn" onclick="showPage('suppliers',this)"><span class="tab-icon">🚚</span>සැපයුම්</button>
+  <button class="tab-btn" onclick="showPage('assets',this)"><span class="tab-icon">🏦</span>වත්කම්</button>
+  <button class="tab-btn" onclick="showPage('liabilities',this)"><span class="tab-icon">📄</span>වගකීම්</button>
+  <button class="tab-btn" onclick="showPage('equity',this)"><span class="tab-icon">👤</span>හිමිකම්</button>
+  <button class="tab-btn" onclick="showPage('salary',this)"><span class="tab-icon">👷</span>වැටුප්</button>
+  <button class="tab-btn" onclick="showPage('reports',this)"><span class="tab-icon">📈</span>වාර්තා</button>
+  <button class="tab-btn" onclick="showPage('notifications',this)"><span class="tab-icon">🔔</span>Alerts<span id="notif-count" style="display:none;background:var(--red);color:#fff;font-size:9px;padding:1px 5px;border-radius:10px;margin-left:2px"></span></button>
 </div>
 
 <div class="main">
 
-  <!-- DASHBOARD -->
-  <div id="page-dashboard" class="page active">
-    <div class="section-title">📊 අද දිනය - <span id="today-date"></span></div>
+<!-- ===== DASHBOARD ===== -->
+<div id="page-dashboard" class="page active">
+  <div class="section-title">📊 අද — <span id="today-date" style="text-transform:none;letter-spacing:0"></span></div>
+  <div id="low-stock-warning" class="warning-banner" style="display:none">⚠️ <span id="low-stock-text"></span></div>
+  <div id="credit-warning" class="warning-banner" style="display:none;border-color:rgba(249,115,22,0.3);color:var(--orange);background:rgba(249,115,22,0.08)">💳 <span id="credit-warning-text"></span></div>
 
-    <div id="low-stock-warning" class="warning-banner" style="display:none">
-      ⚠️ <span id="low-stock-text"></span>
-    </div>
-
-    <div class="summary-grid">
-      <div class="sum-card income">
-        <div class="sum-label">මාසික ආදායම</div>
-        <div class="sum-val green" id="dash-income">Rs 0</div>
-        <div class="sum-icon">💰</div>
-      </div>
-      <div class="sum-card expense">
-        <div class="sum-label">මාසික වියදම්</div>
-        <div class="sum-val red" id="dash-expense">Rs 0</div>
-        <div class="sum-icon">💸</div>
-      </div>
-      <div class="sum-card profit">
-        <div class="sum-label">ලාභය / අලාභය</div>
-        <div class="sum-val gold" id="dash-profit">Rs 0</div>
-        <div class="sum-icon">📈</div>
-      </div>
-      <div class="sum-card asset">
-        <div class="sum-label">මුළු වත්කම්</div>
-        <div class="sum-val blue" id="dash-assets">Rs 0</div>
-        <div class="sum-icon">🏦</div>
-      </div>
-      <div class="sum-card liability">
-        <div class="sum-label">මුළු වගකීම්</div>
-        <div class="sum-val orange" id="dash-liabilities">Rs 0</div>
-        <div class="sum-icon">📋</div>
-      </div>
-      <div class="sum-card equity">
-        <div class="sum-label">මුළු හිමිකම්</div>
-        <div class="sum-val purple" id="dash-equity">Rs 0</div>
-        <div class="sum-icon">👤</div>
-      </div>
-    </div>
-
-    <div class="section-title">🧾 අවසාන ගනුදෙනු</div>
-    <div id="recent-transactions"></div>
-
-    <div class="section-title">📦 අඩු තොග</div>
-    <div id="low-stock-list"></div>
+  <div class="summary-grid">
+    <div class="sum-card income"><div class="sum-label">මාසික ආදායම</div><div class="sum-val green" id="dash-income">Rs 0</div><div class="sum-icon">💰</div></div>
+    <div class="sum-card expense"><div class="sum-label">මාසික වියදම්</div><div class="sum-val red" id="dash-expense">Rs 0</div><div class="sum-icon">💸</div></div>
+    <div class="sum-card profit"><div class="sum-label">ශුද්ධ ලාභය</div><div class="sum-val gold" id="dash-profit">Rs 0</div><div class="sum-icon">📈</div></div>
+    <div class="sum-card asset"><div class="sum-label">මාසික විකිණීම්</div><div class="sum-val blue" id="dash-sales">Rs 0</div><div class="sum-icon">🛒</div></div>
+    <div class="sum-card liability"><div class="sum-label">ගෙවිය යුතු ණය</div><div class="sum-val orange" id="dash-credit">Rs 0</div><div class="sum-icon">💳</div></div>
+    <div class="sum-card equity"><div class="sum-label">Stock items</div><div class="sum-val purple" id="dash-stock">0</div><div class="sum-icon">📦</div></div>
   </div>
 
-  <!-- INCOME -->
-  <div id="page-income" class="page">
-    <button class="toggle-form-btn" onclick="toggleForm('income-form')">➕ නව ආදායමක් එකතු කරන්න</button>
-    <div id="income-form" class="collapsible">
-      <div class="form-card">
-        <div class="form-row">
-          <label>ආදායම් ප්‍රභවය</label>
-          <input type="text" id="inc-name" placeholder="රොටි විකිණීම, කේක් ඇණවුම...">
-        </div>
-        <div class="form-2col">
-          <div class="form-row">
-            <label>මුදල (Rs)</label>
-            <input type="number" id="inc-amount" placeholder="0.00">
-          </div>
-          <div class="form-row">
-            <label>දිනය</label>
-            <input type="date" id="inc-date">
-          </div>
-        </div>
-        <div class="form-row">
-          <label>වර්ගය</label>
-          <select id="inc-cat">
-            <option>රොටි/ද්‍රව්‍ය විකිණීම</option>
-            <option>කේක් ඇණවුම්</option>
-            <option>බිස්කට් විකිණීම</option>
-            <option>දෛනික විකිණීම</option>
-            <option>තොග විකිණීම</option>
-            <option>වෙනත්</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <label>සටහන (අමතර)</label>
-          <input type="text" id="inc-note" placeholder="සටහනක් ලියන්න...">
-        </div>
-        <button class="btn btn-primary" onclick="addIncome()">💰 ආදායම සුරකින්න</button>
+  <!-- Daily Target -->
+  <div class="section-title">🎯 දෛනික ඉලක්කය</div>
+  <div class="target-box">
+    <div class="target-row">
+      <div>
+        <div class="sum-label">අද ඉලක්කය</div>
+        <div style="font-size:13px;color:var(--text2)">ඉලක්කය: <strong id="target-goal-display" style="color:var(--gold)">Rs 0</strong></div>
       </div>
+      <div class="target-pct" id="target-pct" style="color:var(--green)">0%</div>
     </div>
-
-    <div class="section-title">💰 ආදායම් ලේඛනය</div>
-    <div id="income-list"></div>
-  </div>
-
-  <!-- EXPENSE -->
-  <div id="page-expense" class="page">
-    <button class="toggle-form-btn" onclick="toggleForm('expense-form')">➕ නව වියදමක් එකතු කරන්න</button>
-    <div id="expense-form" class="collapsible">
-      <div class="form-card">
-        <div class="form-row">
-          <label>වියදම් විස්තරය</label>
-          <input type="text" id="exp-name" placeholder="පිටි මිලදී ගැනීම, ගෑස් ගාස්තු...">
-        </div>
-        <div class="form-2col">
-          <div class="form-row">
-            <label>මුදල (Rs)</label>
-            <input type="number" id="exp-amount" placeholder="0.00">
-          </div>
-          <div class="form-row">
-            <label>දිනය</label>
-            <input type="date" id="exp-date">
-          </div>
-        </div>
-        <div class="form-row">
-          <label>වර්ගය</label>
-          <select id="exp-cat">
-            <option>අමුද්‍රව්‍ය</option>
-            <option>ශ්‍රමිකයන් වැටුප්</option>
-            <option>ගෑස් / ඉන්ධන</option>
-            <option>විදුලි</option>
-            <option>වාහන</option>
-            <option>යන්ත්‍රෝපකරණ</option>
-            <option>කල්බදු</option>
-            <option>වෙනත්</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <label>සටහන (අමතර)</label>
-          <input type="text" id="exp-note" placeholder="සටහනක් ලියන්න...">
-        </div>
-        <button class="btn btn-primary" onclick="addExpense()">💸 වියදම සුරකින්න</button>
-      </div>
+    <div class="bar-wrap"><div class="bar bar-green" id="target-bar" style="width:0%"></div></div>
+    <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:4px">
+      <span>අද: <strong id="target-today-val" style="color:var(--green)">Rs 0</strong></span>
+      <span id="target-status">ඉලක්කය සකසන්න 👇</span>
     </div>
-
-    <div class="section-title">💸 වියදම් ලේඛනය</div>
-    <div id="expense-list"></div>
-  </div>
-
-  <!-- INVENTORY -->
-  <div id="page-inventory" class="page">
-    <div class="nav-tabs" style="position:relative;top:0;border-radius:10px;margin-bottom:12px;overflow:hidden;">
-      <button class="tab-btn active" onclick="showInventoryTab('raw')" id="raw-tab">🌾 අමුද්‍රව්‍ය</button>
-      <button class="tab-btn" onclick="showInventoryTab('product')" id="product-tab">🥐 නිමි ද්‍රව්‍ය</button>
-    </div>
-
-    <!-- RAW MATERIALS -->
-    <div id="inv-raw">
-      <button class="toggle-form-btn" onclick="toggleForm('raw-form')">➕ අමුද්‍රව්‍යයක් එකතු කරන්න</button>
-      <div id="raw-form" class="collapsible">
-        <div class="form-card">
-          <div class="form-row">
-            <label>අමුද්‍රව්‍ය නම</label>
-            <input type="text" id="raw-name" placeholder="සුදු පිටි, සීනි, බටර්...">
-          </div>
-          <div class="form-2col">
-            <div class="form-row">
-              <label>ප්‍රමාණය</label>
-              <input type="number" id="raw-qty" placeholder="0">
-            </div>
-            <div class="form-row">
-              <label>ඒකකය</label>
-              <select id="raw-unit">
-                <option>kg</option>
-                <option>g</option>
-                <option>L</option>
-                <option>ml</option>
-                <option>packets</option>
-                <option>tins</option>
-                <option>pieces</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-2col">
-            <div class="form-row">
-              <label>අඩු මට්ටම (alert)</label>
-              <input type="number" id="raw-min" placeholder="5">
-            </div>
-            <div class="form-row">
-              <label>මිල (Rs/ඒකකය)</label>
-              <input type="number" id="raw-price" placeholder="0">
-            </div>
-          </div>
-          <button class="btn btn-primary" onclick="addRaw()">🌾 සුරකින්න</button>
-        </div>
-      </div>
-      <div class="section-title">🌾 අමුද්‍රව්‍ය ලේඛනය</div>
-      <div id="raw-list"></div>
-    </div>
-
-    <!-- FINISHED PRODUCTS -->
-    <div id="inv-product" style="display:none">
-      <button class="toggle-form-btn" onclick="toggleForm('product-form')">➕ නිමි ද්‍රව්‍යයක් එකතු කරන්න</button>
-      <div id="product-form" class="collapsible">
-        <div class="form-card">
-          <div class="form-row">
-            <label>නිෂ්පාදනය නම</label>
-            <input type="text" id="prod-name" placeholder="රොටි, කේක්, බිස්කට්...">
-          </div>
-          <div class="form-2col">
-            <div class="form-row">
-              <label>ප්‍රමාණය</label>
-              <input type="number" id="prod-qty" placeholder="0">
-            </div>
-            <div class="form-row">
-              <label>ඒකකය</label>
-              <select id="prod-unit">
-                <option>pieces</option>
-                <option>packets</option>
-                <option>kg</option>
-                <option>loaves</option>
-                <option>dozen</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-2col">
-            <div class="form-row">
-              <label>නිෂ්පාදන වියදම (Rs)</label>
-              <input type="number" id="prod-cost" placeholder="0">
-            </div>
-            <div class="form-row">
-              <label>විකිණීමේ මිල (Rs)</label>
-              <input type="number" id="prod-price" placeholder="0">
-            </div>
-          </div>
-          <div class="form-row">
-            <label>අඩු මට්ටම (alert)</label>
-            <input type="number" id="prod-min" placeholder="10">
-          </div>
-          <button class="btn btn-primary" onclick="addProduct()">🥐 සුරකින්න</button>
-        </div>
-      </div>
-      <div class="section-title">🥐 නිමි ද්‍රව්‍ය ලේඛනය</div>
-      <div id="product-list"></div>
+    <div style="display:flex;gap:8px;margin-top:10px">
+      <input type="number" id="target-input" placeholder="දෛනික ඉලක්කය (Rs)" style="flex:1;background:rgba(255,255,255,0.06);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-size:12px;padding:8px 10px;outline:none;">
+      <button onclick="setDailyTarget()" class="btn btn-primary btn-sm" style="width:auto;padding:8px 14px">සකසන්න</button>
     </div>
   </div>
 
-  <!-- ASSETS -->
-  <div id="page-assets" class="page">
-    <button class="toggle-form-btn" onclick="toggleForm('asset-form')">➕ නව වත්කමක් එකතු කරන්න</button>
-    <div id="asset-form" class="collapsible">
-      <div class="form-card">
-        <div class="form-row">
-          <label>වත්කම් නම</label>
-          <input type="text" id="ast-name" placeholder="බේකරි ඔවන්, මිශ්‍රණ යන්ත්‍රය...">
-        </div>
-        <div class="form-2col">
-          <div class="form-row">
-            <label>වටිනාකම (Rs)</label>
-            <input type="number" id="ast-val" placeholder="0">
-          </div>
-          <div class="form-row">
-            <label>දිනය</label>
-            <input type="date" id="ast-date">
-          </div>
-        </div>
-        <div class="form-row">
-          <label>වර්ගය</label>
-          <select id="ast-cat">
-            <option>ස්ථාවර වත්කම් (Fixed Asset)</option>
-            <option>ජංගම මුදල් (Cash)</option>
-            <option>බැංකු ශේෂය</option>
-            <option>ඉඩම් / ගොඩනැගිලි</option>
-            <option>වාහන</option>
-            <option>ලැබිය යුතු ණය</option>
-            <option>තොග වටිනාකම</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <label>සටහන</label>
-          <input type="text" id="ast-note" placeholder="...">
-        </div>
-        <button class="btn btn-primary" onclick="addAsset()">🏦 සුරකින්න</button>
-      </div>
+  <!-- Monthly Chart -->
+  <div class="section-title">📊 මාසික ප්‍රස්තාරය</div>
+  <div class="chart-container">
+    <div class="chart-bars" id="monthly-chart"></div>
+    <div class="chart-legend">
+      <div class="chart-legend-item"><div class="chart-legend-dot" style="background:var(--green)"></div>ආදායම</div>
+      <div class="chart-legend-item"><div class="chart-legend-dot" style="background:var(--red)"></div>වියදම්</div>
+      <div class="chart-legend-item"><div class="chart-legend-dot" style="background:var(--gold)"></div>ලාභය</div>
     </div>
-    <div class="section-title">🏦 වත්කම් ලේඛනය</div>
-    <div id="asset-list"></div>
   </div>
 
-  <!-- LIABILITIES -->
-  <div id="page-liabilities" class="page">
-    <button class="toggle-form-btn" onclick="toggleForm('liability-form')">➕ නව වගකීමක් එකතු කරන්න</button>
-    <div id="liability-form" class="collapsible">
-      <div class="form-card">
-        <div class="form-row">
-          <label>වගකීම් නම</label>
-          <input type="text" id="lib-name" placeholder="බැංකු ණය, ගෙවිය යුතු රහිනවා...">
-        </div>
-        <div class="form-2col">
-          <div class="form-row">
-            <label>මුදල (Rs)</label>
-            <input type="number" id="lib-val" placeholder="0">
-          </div>
-          <div class="form-row">
-            <label>දිනය</label>
-            <input type="date" id="lib-date">
-          </div>
-        </div>
-        <div class="form-row">
-          <label>වර්ගය</label>
-          <select id="lib-cat">
-            <option>බැංකු ණය</option>
-            <option>ගෙවිය යුතු ණය</option>
-            <option>කල්බදු (ශේෂය)</option>
-            <option>ප්‍රාදේශීය ණය</option>
-            <option>වෙනත්</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <label>සටහන</label>
-          <input type="text" id="lib-note" placeholder="...">
-        </div>
-        <button class="btn btn-primary" onclick="addLiability()">📋 සුරකින්න</button>
-      </div>
-    </div>
-    <div class="section-title">📋 වගකීම් ලේඛනය</div>
-    <div id="liability-list"></div>
-  </div>
-
-  <!-- EQUITY -->
-  <div id="page-equity" class="page">
-    <button class="toggle-form-btn" onclick="toggleForm('equity-form')">➕ නව හිමිකමක් එකතු කරන්න</button>
-    <div id="equity-form" class="collapsible">
-      <div class="form-card">
-        <div class="form-row">
-          <label>හිමිකම් නම</label>
-          <input type="text" id="eqt-name" placeholder="ආරම්භක ප්‍රාග්ධනය, ආයෝජනය...">
-        </div>
-        <div class="form-2col">
-          <div class="form-row">
-            <label>මුදල (Rs)</label>
-            <input type="number" id="eqt-val" placeholder="0">
-          </div>
-          <div class="form-row">
-            <label>දිනය</label>
-            <input type="date" id="eqt-date">
-          </div>
-        </div>
-        <div class="form-row">
-          <label>වර්ගය</label>
-          <select id="eqt-cat">
-            <option>ආරම්භක ප්‍රාග්ධනය</option>
-            <option>අයිතිකාරයන් ආයෝජනය</option>
-            <option>රඳවා ගත් ලාභ</option>
-            <option>ආයෝජකයන්</option>
-            <option>වෙනත්</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <label>සටහන</label>
-          <input type="text" id="eqt-note" placeholder="...">
-        </div>
-        <button class="btn btn-primary" onclick="addEquity()">👤 සුරකින්න</button>
-      </div>
-    </div>
-    <div class="section-title">👤 හිමිකම් ලේඛනය</div>
-    <div id="equity-list"></div>
-  </div>
-
-  <!-- RAW MATERIALS STOCK REPORT -->
-  <div id="page-rawreport" class="page">
-    <div class="section-title">🌾 අමුද්‍රව්‍ය Stock වාර්තාව</div>
-
-    <div class="summary-grid" style="grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px">
-      <div class="sum-card" style="padding:12px">
-        <div class="sum-label">මුළු වර්ග</div>
-        <div class="sum-val" style="color:#4dd9ac;font-size:22px" id="raw-total-types">0</div>
-        <div class="sum-icon">📦</div>
-      </div>
-      <div class="sum-card" style="padding:12px">
-        <div class="sum-label">අඩු Stock</div>
-        <div class="sum-val red" style="font-size:22px" id="raw-low-count">0</div>
-        <div class="sum-icon">⚠️</div>
-      </div>
-      <div class="sum-card" style="padding:12px">
-        <div class="sum-label">මුළු වටිනාකම</div>
-        <div class="sum-val" style="color:#4dd9ac;font-size:14px" id="raw-total-val">Rs 0</div>
-        <div class="sum-icon">💵</div>
-      </div>
-    </div>
-
-    <div class="stock-table-wrap">
-      <table class="stock-table">
-        <thead>
-          <tr>
-            <th>අමුද්‍රව්‍ය</th>
-            <th>ශේෂය</th>
-            <th>alert</th>
-            <th>තත්ත්වය</th>
-            <th>වටිනාකම</th>
-          </tr>
-        </thead>
-        <tbody id="raw-report-tbody"></tbody>
-      </table>
-    </div>
-
-    <div class="section-title">📊 Stock මට්ටම් දර්ශනය</div>
-    <div id="raw-stock-bars"></div>
-  </div>
-
-  <!-- FINISHED PRODUCTS STOCK REPORT -->
-  <div id="page-prodreport" class="page">
-    <div class="section-title">🥐 නිමි ද්‍රව්‍ය Stock වාර්තාව</div>
-
-    <div class="summary-grid" style="grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px">
-      <div class="sum-card" style="padding:12px">
-        <div class="sum-label">මුළු වර්ග</div>
-        <div class="sum-val gold" style="font-size:22px" id="prod-total-types">0</div>
-        <div class="sum-icon">🥐</div>
-      </div>
-      <div class="sum-card" style="padding:12px">
-        <div class="sum-label">අඩු Stock</div>
-        <div class="sum-val red" style="font-size:22px" id="prod-low-count">0</div>
-        <div class="sum-icon">⚠️</div>
-      </div>
-      <div class="sum-card" style="padding:12px">
-        <div class="sum-label">විකිණිය හැකි</div>
-        <div class="sum-val green" style="font-size:14px" id="prod-total-sale">Rs 0</div>
-        <div class="sum-icon">💰</div>
-      </div>
-    </div>
-
-    <div class="stock-table-wrap">
-      <table class="stock-table">
-        <thead>
-          <tr>
-            <th>නිෂ්පාදනය</th>
-            <th>ශේෂය</th>
-            <th>මිල</th>
-            <th>ලාභය</th>
-            <th>තත්ත්වය</th>
-          </tr>
-        </thead>
-        <tbody id="prod-report-tbody"></tbody>
-      </table>
-    </div>
-
-    <div class="section-title">📊 Stock & ලාභ දර්ශනය</div>
-    <div id="prod-stock-bars"></div>
-  </div>
-
-  <!-- SALARY PAGE -->
-  <div id="page-salary" class="page">
-    <div class="section-title">👷 වැටුප් කළමනාකරණය</div>
-
-    <!-- Month selector -->
-    <div class="month-selector">
-      <select id="sal-month">
-        <option value="0">ජනවාරි</option><option value="1">පෙබරවාරි</option>
-        <option value="2">මාර්තු</option><option value="3">අප්‍රේල්</option>
-        <option value="4">මැයි</option><option value="5">ජූනි</option>
-        <option value="6">ජූලි</option><option value="7">අගෝස්තු</option>
-        <option value="8">සැප්තැම්බර්</option><option value="9">ඔක්තෝබර්</option>
-        <option value="10">නොවැම්බර්</option><option value="11">දෙසැම්බර්</option>
-      </select>
-      <input type="number" id="sal-year" placeholder="වර්ෂය" style="max-width:90px">
-    </div>
-
-    <!-- Salary pool -->
-    <div class="salary-hero">
-      <div class="salary-pool-label">මාසික ලාභය (Income - Expenses)</div>
-      <div class="salary-pool-val" id="sal-total-profit">Rs 0.00</div>
-      <div class="salary-pool-sub">වැටුප් ෆොන්ඩ් (50%) = <strong id="sal-pool">Rs 0.00</strong></div>
-    </div>
-
-    <!-- Breakdown formula info -->
-    <div style="background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.1);border-radius:10px;padding:12px;margin-bottom:14px;font-size:11px;color:var(--muted);line-height:1.8">
-      📐 <strong style="color:var(--accent2)">බෙදීමේ සූත්‍රය:</strong><br>
-      ප්‍රධාන සේවකයා → 50% &nbsp;|&nbsp; උදව් සේවකයන් (2) → 20% බැගින් &nbsp;|&nbsp; අමතර සේවකයා → 10%
-    </div>
-
-    <!-- Worker name setup -->
-    <div class="section-title">✏️ සේවකයන් නම් සකසන්න</div>
-    <div class="form-card" style="margin-bottom:14px">
-      <div style="font-size:11px;color:var(--muted);margin-bottom:10px">සේවකයන්ගේ නම් ලියා Save කරන්න</div>
-      <div class="name-input-row">
-        <span style="font-size:18px">👑</span>
-        <input type="text" id="name-chief" placeholder="ප්‍රධාන සේවකයා නම">
-        <button class="save-name-btn" onclick="saveNames()">සුරකින්න</button>
-      </div>
-      <div class="name-input-row">
-        <span style="font-size:18px">🔵</span>
-        <input type="text" id="name-h1" placeholder="උදව් සේවකයා 1 නම">
-      </div>
-      <div class="name-input-row">
-        <span style="font-size:18px">🔵</span>
-        <input type="text" id="name-h2" placeholder="උදව් සේවකයා 2 නම">
-      </div>
-      <div class="name-input-row">
-        <span style="font-size:18px">🟣</span>
-        <input type="text" id="name-extra" placeholder="අමතර සේවකයා නම">
-      </div>
-    </div>
-
-    <!-- Worker salary cards -->
-    <div class="section-title">💵 වැටුප් බෙදීම</div>
-    <div id="salary-cards"></div>
-
-    <!-- Pay button -->
-    <button class="btn btn-primary" onclick="recordSalaryPayment()" style="margin-bottom:16px">
-      ✅ මෙම මාසය වැටුප් ගෙවා ඇත - Record කරන්න
-    </button>
-
-    <!-- Salary history -->
-    <div class="section-title">📋 වැටුප් ඉතිහාසය</div>
-    <div id="salary-history"></div>
-  </div>
-
-  <!-- REPORTS -->
-  <div id="page-reports" class="page">
-    <div class="section-title">📅 කාල සීමාව</div>
-    <div class="filter-row">
-      <span class="filter-label">සිට:</span>
-      <input type="date" id="rep-from">
-      <span class="filter-label">දක්වා:</span>
-      <input type="date" id="rep-to">
-    </div>
-    <button class="btn btn-primary" onclick="generateReport()" style="margin-bottom:14px">📊 වාර්තාව ජනනය කරන්න</button>
-
-    <div id="report-output"></div>
-
-    <div class="section-title">⚖️ ශේෂ පත්‍රය (Balance Sheet)</div>
-    <div id="balance-sheet"></div>
-  </div>
-
+  <div class="section-title">🧾 අවසාන ගනුදෙනු</div>
+  <div id="recent-transactions"></div>
+  <div class="section-title">⚠️ අඩු Stock</div>
+  <div id="low-stock-list"></div>
 </div>
 
+<!-- ===== INCOME ===== -->
+<div id="page-income" class="page">
+  <button class="toggle-form-btn" onclick="toggleForm('income-form')">➕ නව ආදායමක් එකතු කරන්න</button>
+  <div id="income-form" class="collapsible">
+    <div class="form-card">
+      <div class="form-row"><label>ආදායම් ප්‍රභවය</label><input type="text" id="inc-name" placeholder="රොටි විකිණීම..."></div>
+      <div class="form-2col">
+        <div class="form-row"><label>මුදල (Rs)</label><input type="number" id="inc-amount" placeholder="0.00"></div>
+        <div class="form-row"><label>දිනය</label><input type="date" id="inc-date"></div>
+      </div>
+      <div class="form-row"><label>වර්ගය</label>
+        <select id="inc-cat"><option>රොටි/ද්‍රව්‍ය විකිණීම</option><option>කේක් ඇණවුම්</option><option>බිස්කට් විකිණීම</option><option>දෛනික විකිණීම</option><option>තොග විකිණීම</option><option>වෙනත්</option></select>
+      </div>
+      <div class="form-row"><label>සටහන</label><input type="text" id="inc-note" placeholder="..."></div>
+      <button class="btn btn-primary" onclick="addIncome()">💰 සුරකින්න</button>
+    </div>
+  </div>
+  <div class="section-title">💰 ආදායම් ලේඛනය</div>
+  <div id="income-list"></div>
+</div>
+
+<!-- ===== EXPENSE ===== -->
+<div id="page-expense" class="page">
+  <button class="toggle-form-btn" onclick="toggleForm('expense-form')">➕ නව වියදමක් එකතු කරන්න</button>
+  <div id="expense-form" class="collapsible">
+    <div class="form-card">
+      <div class="form-row"><label>විස්තරය</label><input type="text" id="exp-name" placeholder="පිටි මිලදී ගැනීම..."></div>
+      <div class="form-2col">
+        <div class="form-row"><label>මුදල (Rs)</label><input type="number" id="exp-amount" placeholder="0.00"></div>
+        <div class="form-row"><label>දිනය</label><input type="date" id="exp-date"></div>
+      </div>
+      <div class="form-row"><label>වර්ගය</label>
+        <select id="exp-cat"><option>අමුද්‍රව්‍ය</option><option>ශ්‍රමිකයන් වැටුප්</option><option>ගෑස් / ඉන්ධන</option><option>විදුලි</option><option>වාහන</option><option>යන්ත්‍රෝපකරණ</option><option>කල්බදු</option><option>වෙනත්</option></select>
+      </div>
+      <div class="form-row"><label>සටහන</label><input type="text" id="exp-note" placeholder="..."></div>
+      <button class="btn btn-primary" onclick="addExpense()">💸 සුරකින්න</button>
+    </div>
+  </div>
+  <div class="section-title">💸 වියදම් ලේඛනය</div>
+  <div id="expense-list"></div>
+</div>
+
+<!-- ===== INVENTORY ===== -->
+<div id="page-inventory" class="page">
+  <div class="neo-pill-nav">
+    <button class="neo-pill-btn active" onclick="showInvTab('raw',this)" id="inv-tab-raw">🌾 අමුද්‍රව්‍ය</button>
+    <button class="neo-pill-btn" onclick="showInvTab('product',this)" id="inv-tab-prod">🥐 නිමි ද්‍රව්‍ය</button>
+  </div>
+  <div id="inv-raw">
+    <button class="toggle-form-btn" onclick="toggleForm('raw-form')">➕ අමුද්‍රව්‍යයක් එකතු කරන්න</button>
+    <div id="raw-form" class="collapsible">
+      <div class="form-card">
+        <div class="form-row"><label>නම</label><input type="text" id="raw-name" placeholder="සුදු පිටි, සීනි..."></div>
+        <div class="form-2col">
+          <div class="form-row"><label>ප්‍රමාණය</label><input type="number" id="raw-qty" placeholder="0"></div>
+          <div class="form-row"><label>ඒකකය</label><select id="raw-unit"><option>kg</option><option>g</option><option>L</option><option>ml</option><option>packets</option><option>tins</option><option>pieces</option></select></div>
+        </div>
+        <div class="form-2col">
+          <div class="form-row"><label>Alert මට්ටම</label><input type="number" id="raw-min" placeholder="5"></div>
+          <div class="form-row"><label>මිල (Rs/ඒකකය)</label><input type="number" id="raw-price" placeholder="0"></div>
+        </div>
+        <div class="form-row"><label>සැපයුම්කරු</label><select id="raw-supplier"><option value="">-- තෝරන්න --</option></select></div>
+        <button class="btn btn-primary" onclick="addRaw()">🌾 සුරකින්න</button>
+      </div>
+    </div>
+    <div class="section-title">🌾 අමුද්‍රව්‍ය ලේඛනය</div>
+    <div id="raw-list"></div>
+  </div>
+  <div id="inv-product" style="display:none">
+    <button class="toggle-form-btn" onclick="toggleForm('prod-form')">➕ නිමි ද්‍රව්‍යයක් එකතු කරන්න</button>
+    <div id="prod-form" class="collapsible">
+      <div class="form-card">
+        <div class="form-row"><label>නම</label><input type="text" id="prod-name" placeholder="රොටි, කේක්..."></div>
+        <div class="form-2col">
+          <div class="form-row"><label>ප්‍රමාණය</label><input type="number" id="prod-qty" placeholder="0"></div>
+          <div class="form-row"><label>ඒකකය</label><select id="prod-unit"><option>pieces</option><option>packets</option><option>kg</option><option>loaves</option><option>dozen</option></select></div>
+        </div>
+        <div class="form-2col">
+          <div class="form-row"><label>නිෂ්පාදන වියදම (Rs)</label><input type="number" id="prod-cost" placeholder="0"></div>
+          <div class="form-row"><label>විකිණීමේ මිල (Rs)</label><input type="number" id="prod-price" placeholder="0"></div>
+        </div>
+        <div class="form-row"><label>Alert මට්ටම</label><input type="number" id="prod-min" placeholder="10"></div>
+        <button class="btn btn-primary" onclick="addProduct()">🥐 සුරකින්න</button>
+      </div>
+    </div>
+    <div class="section-title">🥐 නිමි ද්‍රව්‍ය ලේඛනය</div>
+    <div id="product-list"></div>
+  </div>
+</div>
+
+<!-- ===== SALES & RETURNS ===== -->
+<div id="page-salesreturn" class="page">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:14px">
+    <div class="sum-card income" style="padding:12px"><div class="sum-label">විකිණීම්</div><div class="sum-val green" id="sr-total-sales" style="font-size:14px">Rs 0</div></div>
+    <div class="sum-card expense" style="padding:12px"><div class="sum-label">ආපසු</div><div class="sum-val red" id="sr-total-returns" style="font-size:14px">Rs 0</div></div>
+    <div class="sum-card profit" style="padding:12px"><div class="sum-label">ශුද්ධ</div><div class="sum-val gold" id="sr-net-top" style="font-size:14px">Rs 0</div></div>
+  </div>
+  <div class="sr-type-toggle">
+    <button class="sr-type-btn sale-active" id="btn-sale" onclick="setSRType('sale')"><span class="sr-type-icon">🛒</span>විකිණීමක්</button>
+    <button class="sr-type-btn" id="btn-return" onclick="setSRType('return')"><span class="sr-type-icon">↩️</span>ආපසු එවීමක්</button>
+  </div>
+  <div class="form-card">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <span id="sr-form-icon" style="font-size:18px">🛒</span>
+      <span id="sr-form-title" style="font-size:13px;font-weight:700;color:var(--text2)">නව විකිණීමක්</span>
+      <span id="sr-form-badge" class="badge badge-sale" style="margin-left:auto">SALE</span>
+    </div>
+    <div class="form-row"><label>නිෂ්පාදනය</label><select id="sr-product" onchange="populateSRPrice()"><option value="">-- තෝරන්න --</option></select></div>
+    <div class="form-2col">
+      <div class="form-row"><label>ප්‍රමාණය</label><input type="number" id="sr-qty" placeholder="0" oninput="calcSRAmount()"></div>
+      <div class="form-row"><label id="sr-price-lbl">මිල (Rs)</label><input type="number" id="sr-price" placeholder="0.00" oninput="calcSRAmount()"></div>
+    </div>
+    <div class="form-2col">
+      <div class="form-row"><label>දිනය</label><input type="date" id="sr-date"></div>
+      <div class="form-row"><label>ගනුකරු</label><select id="sr-customer-sel"><option value="">-- ගනුකරු --</option></select></div>
+    </div>
+    <div style="background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:10px;padding:11px;margin-bottom:11px">
+      <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted2);margin-bottom:3px"><span>ප්‍රමාණය × මිල</span><span id="sr-calc-disp">0 × Rs 0</span></div>
+      <div style="display:flex;justify-content:space-between;font-size:15px;font-weight:800"><span style="color:var(--muted2)">මුළු</span><span id="sr-calc-total" style="color:var(--green)">Rs 0.00</span></div>
+    </div>
+    <div class="form-row"><label>සටහන</label><input type="text" id="sr-note" placeholder="..."></div>
+    <button class="btn btn-primary" id="sr-submit-btn" onclick="addSaleReturn()">🛒 සුරකින්න</button>
+  </div>
+  <div class="section-title">📋 ගනුදෙනු ලේඛනය</div>
+  <div class="sr-filter-pills">
+    <button class="sr-filter-pill pill-all" onclick="setSRFilter('all',this)">🔵 සියල්ල</button>
+    <button class="sr-filter-pill" onclick="setSRFilter('sale',this)">🟢 විකිණීම්</button>
+    <button class="sr-filter-pill" onclick="setSRFilter('return',this)">🔴 ආපසු</button>
+  </div>
+  <div class="filter-row">
+    <span class="filter-label">සිට:</span><input type="date" id="sr-from">
+    <span class="filter-label">දක්වා:</span><input type="date" id="sr-to">
+    <button onclick="renderSR()" style="padding:7px 11px;background:rgba(59,130,246,0.15);border:1px solid rgba(59,130,246,0.3);border-radius:8px;color:var(--accent2);font-size:12px;cursor:pointer">🔍</button>
+  </div>
+  <div id="sr-list"></div>
+  <div class="sr-net-box">
+    <div class="sr-net-row"><span>🛒 මුළු විකිණීම්</span><span id="sr-net-sales" style="color:var(--green)">Rs 0.00</span></div>
+    <div class="sr-net-row"><span>↩️ මුළු ආපසු</span><span id="sr-net-rets" style="color:var(--red)">Rs 0.00</span></div>
+    <div class="sr-net-total"><span>📊 ශුද්ධ</span><span id="sr-net-final" style="color:var(--gold)">Rs 0.00</span></div>
+  </div>
+</div>
+
+<!-- ===== CREDIT SALES ===== -->
+<div id="page-credit" class="page">
+  <div class="section-title">💳 ණය ගනුදෙනු</div>
+  <div class="credit-summary">
+    <div class="credit-card"><div class="credit-lbl">මුළු ණය</div><div class="credit-val" style="color:var(--orange)" id="cr-total">Rs 0</div></div>
+    <div class="credit-card"><div class="credit-lbl">ගෙවා ඇත</div><div class="credit-val" style="color:var(--green)" id="cr-paid">Rs 0</div></div>
+    <div class="credit-card"><div class="credit-lbl">ශේෂය</div><div class="credit-val" style="color:var(--red)" id="cr-balance">Rs 0</div></div>
+  </div>
+  <button class="toggle-form-btn" onclick="toggleForm('credit-form')">➕ නව ණය ගනුදෙනුවක්</button>
+  <div id="credit-form" class="collapsible">
+    <div class="form-card">
+      <div class="form-row"><label>ගනුකරු නම</label><select id="cr-customer"><option value="">-- ගනුකරු --</option></select></div>
+      <div class="form-row"><label>නිෂ්පාදනය / විස්තරය</label><input type="text" id="cr-desc" placeholder="රොටි 10ක් ණයට..."></div>
+      <div class="form-2col">
+        <div class="form-row"><label>මුදල (Rs)</label><input type="number" id="cr-amount" placeholder="0.00"></div>
+        <div class="form-row"><label>දිනය</label><input type="date" id="cr-date"></div>
+      </div>
+      <div class="form-row"><label>ගෙවිය යුතු දිනය</label><input type="date" id="cr-due"></div>
+      <div class="form-row"><label>සටහන</label><input type="text" id="cr-note" placeholder="..."></div>
+      <button class="btn btn-primary" onclick="addCredit()">💳 සුරකින්න</button>
+    </div>
+  </div>
+  <div class="section-title">📋 ණය ලේඛනය</div>
+  <div id="credit-list"></div>
+</div>
+
+<!-- ===== CUSTOMERS ===== -->
+<div id="page-customers" class="page">
+  <div class="section-title">👥 ගනුකරු කළමනාකරණය</div>
+  <button class="toggle-form-btn" onclick="toggleForm('cust-form')">➕ නව ගනුකරුවෙක් එකතු කරන්න</button>
+  <div id="cust-form" class="collapsible">
+    <div class="form-card">
+      <div class="form-row"><label>නම</label><input type="text" id="cust-name" placeholder="ගනුකරු නම"></div>
+      <div class="form-2col">
+        <div class="form-row"><label>දුරකථන</label><input type="tel" id="cust-phone" placeholder="07X XXX XXXX"></div>
+        <div class="form-row"><label>වර්ගය</label><select id="cust-type"><option>නිතිපතා</option><option>තොග</option><option>ඇණවුම්</option><option>වෙනත්</option></select></div>
+      </div>
+      <div class="form-row"><label>ලිපිනය (අමතර)</label><input type="text" id="cust-addr" placeholder="ලිපිනය..."></div>
+      <div class="form-row"><label>සටහන</label><input type="text" id="cust-note" placeholder="..."></div>
+      <button class="btn btn-primary" onclick="addCustomer()">👥 සුරකින්න</button>
+    </div>
+  </div>
+  <div class="section-title">📋 ගනුකරු ලේඛනය</div>
+  <div id="customer-list"></div>
+</div>
+
+<!-- ===== RECIPES ===== -->
+<div id="page-recipes" class="page">
+  <div class="section-title">📋 නිෂ්පාදන Recipes</div>
+  <button class="toggle-form-btn" onclick="toggleForm('recipe-form')">➕ නව Recipe එකක් එකතු කරන්න</button>
+  <div id="recipe-form" class="collapsible">
+    <div class="form-card">
+      <div class="form-row"><label>නිෂ්පාදනය</label><select id="rec-product"><option value="">-- නිෂ්පාදනය --</option></select></div>
+      <div class="form-row"><label>නිෂ්පාදන ප්‍රමාණය (batch size)</label><input type="number" id="rec-batch" placeholder="50 රොටි..."></div>
+      <div class="section-title" style="margin:10px 0 8px">🌾 අමුද්‍රව්‍ය</div>
+      <div id="recipe-ingredients-list"></div>
+      <button type="button" onclick="addRecipeIngRow()" style="width:100%;padding:9px;background:rgba(6,182,212,0.08);border:1px dashed rgba(6,182,212,0.3);border-radius:8px;color:var(--cyan);font-size:12px;cursor:pointer;margin-bottom:10px">➕ අමුද්‍රව්‍යයක් එකතු කරන්න</button>
+      <div class="form-row"><label>සටහන</label><input type="text" id="rec-note" placeholder="..."></div>
+      <button class="btn btn-primary" onclick="saveRecipe()">📋 Recipe සුරකින්න</button>
+    </div>
+  </div>
+  <div id="recipe-list"></div>
+  <!-- Recipe use simulation -->
+  <div class="section-title">⚡ Recipe භාවිතය (Stock ගණනය)</div>
+  <div class="form-card">
+    <div class="form-row"><label>Recipe</label><select id="use-recipe-sel"><option value="">-- Recipe --</option></select></div>
+    <div class="form-row"><label>Batches ගණන</label><input type="number" id="use-batches" placeholder="1" value="1"></div>
+    <div id="use-recipe-preview"></div>
+    <button class="btn btn-green" onclick="useRecipe()">⚡ නිෂ්පාදනය කරන්න (Stock අඩු කරන්න)</button>
+  </div>
+</div>
+
+<!-- ===== SUPPLIERS ===== -->
+<div id="page-suppliers" class="page">
+  <div class="section-title">🚚 සැපයුම්කරුවන්</div>
+  <button class="toggle-form-btn" onclick="toggleForm('sup-form')">➕ නව සැපයුම්කරුවෙක්</button>
+  <div id="sup-form" class="collapsible">
+    <div class="form-card">
+      <div class="form-row"><label>සැපයුම්කරු නම</label><input type="text" id="sup-name" placeholder="නම"></div>
+      <div class="form-2col">
+        <div class="form-row"><label>දුරකථන</label><input type="tel" id="sup-phone" placeholder="07X..."></div>
+        <div class="form-row"><label>සැපයන ද්‍රව්‍ය</label><input type="text" id="sup-goods" placeholder="පිටි, සීනි..."></div>
+      </div>
+      <div class="form-row"><label>ලිපිනය</label><input type="text" id="sup-addr" placeholder="..."></div>
+      <div class="form-row"><label>සටහන</label><input type="text" id="sup-note" placeholder="..."></div>
+      <button class="btn btn-primary" onclick="addSupplier()">🚚 සුරකින්න</button>
+    </div>
+  </div>
+  <div class="section-title">📋 සැපයුම්කරුවන් ලේඛනය</div>
+  <div id="supplier-list"></div>
+
+  <div class="section-title">📦 ඇණවුමක් Record කරන්න</div>
+  <div class="form-card">
+    <div class="form-row"><label>සැපයුම්කරු</label><select id="ord-sup"><option value="">-- තෝරන්න --</option></select></div>
+    <div class="form-row"><label>ද්‍රව්‍ය විස්තරය</label><input type="text" id="ord-desc" placeholder="50kg පිටි..."></div>
+    <div class="form-2col">
+      <div class="form-row"><label>මුදල (Rs)</label><input type="number" id="ord-amount" placeholder="0"></div>
+      <div class="form-row"><label>දිනය</label><input type="date" id="ord-date"></div>
+    </div>
+    <div class="form-row"><label>තත්ත්වය</label><select id="ord-status"><option>ලැබී ඇත</option><option>බලාපොරොත්තුවෙන්</option><option>අවලංගු</option></select></div>
+    <button class="btn btn-primary" onclick="addOrder()">📦 ඇණවුම සුරකින්න</button>
+  </div>
+  <div class="section-title">📦 ඇණවුම් ලේඛනය</div>
+  <div id="order-list"></div>
+</div>
+
+<!-- ===== ASSETS ===== -->
+<div id="page-assets" class="page">
+  <button class="toggle-form-btn" onclick="toggleForm('asset-form')">➕ නව වත්කමක්</button>
+  <div id="asset-form" class="collapsible">
+    <div class="form-card">
+      <div class="form-row"><label>නම</label><input type="text" id="ast-name" placeholder="ඔවන්, යන්ත්‍රය..."></div>
+      <div class="form-2col">
+        <div class="form-row"><label>වටිනාකම (Rs)</label><input type="number" id="ast-val" placeholder="0"></div>
+        <div class="form-row"><label>දිනය</label><input type="date" id="ast-date"></div>
+      </div>
+      <div class="form-row"><label>වර්ගය</label><select id="ast-cat"><option>ස්ථාවර වත්කම්</option><option>ජංගම මුදල්</option><option>බැංකු ශේෂය</option><option>ඉඩම් / ගොඩනැගිලි</option><option>වාහන</option><option>ලැබිය යුතු ණය</option><option>තොග වටිනාකම</option></select></div>
+      <div class="form-row"><label>සටහන</label><input type="text" id="ast-note" placeholder="..."></div>
+      <button class="btn btn-primary" onclick="addAsset()">🏦 සුරකින්න</button>
+    </div>
+  </div>
+  <div class="section-title">🏦 වත්කම් ලේඛනය</div>
+  <div id="asset-list"></div>
+</div>
+
+<!-- ===== LIABILITIES ===== -->
+<div id="page-liabilities" class="page">
+  <button class="toggle-form-btn" onclick="toggleForm('lib-form')">➕ නව වගකීමක්</button>
+  <div id="lib-form" class="collapsible">
+    <div class="form-card">
+      <div class="form-row"><label>නම</label><input type="text" id="lib-name" placeholder="බැංකු ණය..."></div>
+      <div class="form-2col">
+        <div class="form-row"><label>මුදල (Rs)</label><input type="number" id="lib-val" placeholder="0"></div>
+        <div class="form-row"><label>දිනය</label><input type="date" id="lib-date"></div>
+      </div>
+      <div class="form-row"><label>වර්ගය</label><select id="lib-cat"><option>බැංකු ණය</option><option>ගෙවිය යුතු ණය</option><option>කල්බදු</option><option>ප්‍රාදේශීය ණය</option><option>වෙනත්</option></select></div>
+      <div class="form-row"><label>සටහන</label><input type="text" id="lib-note" placeholder="..."></div>
+      <button class="btn btn-primary" onclick="addLiability()">📄 සුරකින්න</button>
+    </div>
+  </div>
+  <div class="section-title">📄 වගකීම් ලේඛනය</div>
+  <div id="liability-list"></div>
+</div>
+
+<!-- ===== EQUITY ===== -->
+<div id="page-equity" class="page">
+  <button class="toggle-form-btn" onclick="toggleForm('eqt-form')">➕ නව හිමිකමක්</button>
+  <div id="eqt-form" class="collapsible">
+    <div class="form-card">
+      <div class="form-row"><label>නම</label><input type="text" id="eqt-name" placeholder="ආරම්භක ප්‍රාග්ධනය..."></div>
+      <div class="form-2col">
+        <div class="form-row"><label>මුදල (Rs)</label><input type="number" id="eqt-val" placeholder="0"></div>
+        <div class="form-row"><label>දිනය</label><input type="date" id="eqt-date"></div>
+      </div>
+      <div class="form-row"><label>වර්ගය</label><select id="eqt-cat"><option>ආරම්භක ප්‍රාග්ධනය</option><option>ආයෝජනය</option><option>රඳවා ගත් ලාභ</option><option>වෙනත්</option></select></div>
+      <div class="form-row"><label>සටහන</label><input type="text" id="eqt-note" placeholder="..."></div>
+      <button class="btn btn-primary" onclick="addEquity()">👤 සුරකින්න</button>
+    </div>
+  </div>
+  <div class="section-title">👤 හිමිකම් ලේඛනය</div>
+  <div id="equity-list"></div>
+</div>
+
+<!-- ===== SALARY ===== -->
+<div id="page-salary" class="page">
+  <div class="section-title">👷 වැටුප් කළමනාකරණය</div>
+  <div class="month-selector">
+    <select id="sal-month"><option value="0">ජනවාරි</option><option value="1">පෙබරවාරි</option><option value="2">මාර්තු</option><option value="3">අප්‍රේල්</option><option value="4">මැයි</option><option value="5">ජූනි</option><option value="6">ජූලි</option><option value="7">අගෝස්තු</option><option value="8">සැප්තැම්බර්</option><option value="9">ඔක්තෝබර්</option><option value="10">නොවැම්බර්</option><option value="11">දෙසැම්බර්</option></select>
+    <input type="number" id="sal-year" placeholder="වර්ෂය" style="max-width:90px">
+  </div>
+  <div class="salary-hero">
+    <div class="salary-pool-label">මාසික ලාභය</div>
+    <div class="salary-pool-val" id="sal-profit">Rs 0.00</div>
+    <div class="salary-pool-sub">වැටුප් pool (50%) = <strong id="sal-pool">Rs 0.00</strong></div>
+  </div>
+  <div style="background:rgba(255,255,255,0.03);border:1px dashed rgba(255,255,255,0.1);border-radius:10px;padding:11px;margin-bottom:12px;font-size:11px;color:var(--muted);line-height:1.8">
+    📐 <strong style="color:var(--accent2)">සූත්‍රය:</strong> ප්‍රධාන→50% · උදව් 2×20% · අමතර→10%
+  </div>
+  <div class="section-title">✏️ නම් සකසන්න</div>
+  <div class="form-card" style="margin-bottom:12px">
+    <div class="name-input-row"><span>👑</span><input type="text" id="name-chief" placeholder="ප්‍රධාන සේවකයා"><button class="save-name-btn" onclick="saveNames()">සුරකින්න</button></div>
+    <div class="name-input-row"><span>🔵</span><input type="text" id="name-h1" placeholder="උදව් 1"></div>
+    <div class="name-input-row"><span>🔵</span><input type="text" id="name-h2" placeholder="උදව් 2"></div>
+    <div class="name-input-row"><span>🟣</span><input type="text" id="name-extra" placeholder="අමතර සේවකයා"></div>
+  </div>
+  <div class="section-title">💵 වැටුප් බෙදීම</div>
+  <div id="salary-cards"></div>
+  <button class="btn btn-primary" onclick="recordSalary()" style="margin-bottom:14px">✅ මෙම මාසය record කරන්න</button>
+  <div class="section-title">📋 ඉතිහාසය</div>
+  <div id="salary-history"></div>
+</div>
+
+<!-- ===== REPORTS ===== -->
+<div id="page-reports" class="page">
+  <div class="section-title">📅 කාල සීමාව</div>
+  <div class="filter-row">
+    <span class="filter-label">සිට:</span><input type="date" id="rep-from">
+    <span class="filter-label">දක්වා:</span><input type="date" id="rep-to">
+  </div>
+  <button class="btn btn-primary" onclick="generateReport()" style="margin-bottom:10px">📊 වාර්තාව ජනනය කරන්න</button>
+  <button class="wa-btn" onclick="shareWhatsApp()" style="margin-bottom:12px">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp වාර්තාව Share කරන්න
+  </button>
+  <button onclick="window.print()" style="width:100%;padding:11px;background:rgba(255,255,255,0.06);border:1px solid var(--border2);border-radius:var(--radius-sm);color:var(--text);font-family:'Noto Sans Sinhala',sans-serif;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:14px">🖨️ Print / PDF Export</button>
+  <div id="report-output"></div>
+  <div class="section-title">⚖️ Balance Sheet</div>
+  <div id="balance-sheet"></div>
+</div>
+
+<!-- ===== NOTIFICATIONS ===== -->
+<div id="page-notifications" class="page">
+  <div class="section-title">🔔 Alerts & දැනුම්දීම්</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
+    <div class="sum-card" style="padding:12px"><div class="sum-label">Stock Alerts</div><div class="sum-val red" id="notif-stock-count">0</div></div>
+    <div class="sum-card" style="padding:12px"><div class="sum-label">ණය Alerts</div><div class="sum-val orange" id="notif-credit-count">0</div></div>
+  </div>
+  <div id="notifications-list"></div>
+</div>
+
+</div><!-- end .main -->
+
 <script>
-// ======= DATA STORE =======
-let data = JSON.parse(localStorage.getItem('bakery_data') || '{}');
-data = {
-  income: data.income || [],
-  expenses: data.expenses || [],
-  assets: data.assets || [],
-  liabilities: data.liabilities || [],
-  equity: data.equity || [],
-  rawMaterials: data.rawMaterials || [],
-  products: data.products || []
-};
+// ============ DATA STORE ============
+function loadData() {
+  let d = JSON.parse(localStorage.getItem('kvs_data') || '{}');
+  return {
+    income: d.income||[], expenses: d.expenses||[],
+    assets: d.assets||[], liabilities: d.liabilities||[], equity: d.equity||[],
+    rawMaterials: d.rawMaterials||[], products: d.products||[],
+    customers: d.customers||[], suppliers: d.suppliers||[],
+    recipes: d.recipes||[], orders: d.orders||[],
+    dailyTarget: d.dailyTarget||0
+  };
+}
+let D = loadData();
+let salesReturns = JSON.parse(localStorage.getItem('kvs_sr')||'[]');
+let credits = JSON.parse(localStorage.getItem('kvs_credits')||'[]');
+let salaryHist = JSON.parse(localStorage.getItem('kvs_salary_hist')||'[]');
+let salaryNames = JSON.parse(localStorage.getItem('kvs_salary_names')||'{"chief":"ප්‍රධාන සේවකයා","h1":"උදව් සේවකයා 1","h2":"උදව් සේවකයා 2","extra":"අමතර සේවකයා"}');
 
-function save() {
-  localStorage.setItem('bakery_data', JSON.stringify(data));
-}
+function save() { localStorage.setItem('kvs_data', JSON.stringify(D)); }
+function saveSR() { localStorage.setItem('kvs_sr', JSON.stringify(salesReturns)); }
+function saveCR() { localStorage.setItem('kvs_credits', JSON.stringify(credits)); }
 
-// ======= FORMAT =======
-function fmt(n) {
-  return 'Rs ' + Number(n || 0).toLocaleString('en-LK', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-}
-function today() {
-  return new Date().toISOString().split('T')[0];
-}
-function fmtDate(d) {
-  if (!d) return '';
-  const dt = new Date(d);
-  return dt.toLocaleDateString('si-LK', {year:'numeric', month:'short', day:'numeric'});
-}
+// ============ HELPERS ============
+const fmt = n => 'Rs ' + Number(n||0).toLocaleString('en-LK',{minimumFractionDigits:2,maximumFractionDigits:2});
+const today = () => new Date().toISOString().split('T')[0];
+const fmtD = d => { if(!d) return ''; return new Date(d).toLocaleDateString('si-LK',{year:'numeric',month:'short',day:'numeric'}); };
+const fmtM = ['ජනවාරි','පෙබරවාරි','මාර්තු','අප්‍රේල්','මැයි','ජූනි','ජූලි','අගෝස්තු','සැප්තැම්බර්','ඔක්තෝබර්','නොවැම්බර්','දෙසැම්බර්'];
+const emptyState = (ic,t) => `<div class="empty-state"><span class="empty-icon">${ic}</span><p>${t}</p></div>`;
+const stockBadge = (q,m) => q<=0?'<span class="badge stock-low">🚫 නිම්</span>':q<=m?'<span class="badge stock-low">⚠️ අඩු</span>':q<=m*2?'<span class="badge stock-med">⚡ මධ්‍යම</span>':'<span class="badge stock-ok">✅ හොඳ</span>';
 
-// ======= NAV =======
-function showPage(p) {
-  document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-  document.getElementById('page-' + p).classList.add('active');
-  event.currentTarget.classList.add('active');
-  if (p === 'rawreport') renderRawReport();
-  else if (p === 'prodreport') renderProdReport();
-  else if (p === 'salary') renderSalary();
-  else render();
-}
-
-function toggleForm(id) {
-  const el = document.getElementById(id);
-  el.classList.toggle('open');
+// ============ NAV ============
+let currentPage = 'dashboard';
+function showPage(p, el) {
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(x=>x.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  if(el) el.classList.add('active');
+  currentPage = p;
+  document.getElementById('search-results').style.display = 'none';
+  renderPage(p);
 }
 
-function showInventoryTab(tab) {
-  document.getElementById('inv-raw').style.display = tab === 'raw' ? 'block' : 'none';
-  document.getElementById('inv-product').style.display = tab === 'product' ? 'block' : 'none';
-  document.getElementById('raw-tab').classList.toggle('active', tab === 'raw');
-  document.getElementById('product-tab').classList.toggle('active', tab === 'product');
+function renderPage(p) {
+  if(p==='dashboard') renderDashboard();
+  else if(p==='income') renderIncome();
+  else if(p==='expense') renderExpense();
+  else if(p==='inventory') { renderRaw(); renderProducts(); populateSupplierDropdowns(); }
+  else if(p==='salesreturn') { populateSRDropdowns(); renderSR(); }
+  else if(p==='credit') { populateCreditDropdowns(); renderCredit(); }
+  else if(p==='customers') renderCustomers();
+  else if(p==='recipes') { populateRecipeDropdowns(); renderRecipes(); }
+  else if(p==='suppliers') renderSuppliers();
+  else if(p==='assets') renderAssets();
+  else if(p==='liabilities') renderLiabilities();
+  else if(p==='equity') renderEquity();
+  else if(p==='salary') renderSalary();
+  else if(p==='reports') {}
+  else if(p==='notifications') renderNotifications();
 }
 
-// ======= ADD FUNCTIONS =======
-function addIncome() {
-  const name = document.getElementById('inc-name').value.trim();
-  const amount = parseFloat(document.getElementById('inc-amount').value);
-  const date = document.getElementById('inc-date').value || today();
-  const cat = document.getElementById('inc-cat').value;
-  const note = document.getElementById('inc-note').value.trim();
-  if (!name || !amount) return alert('නම සහ මුදල ලියන්න!');
-  data.income.push({id: Date.now(), name, amount, date, cat, note});
-  save(); renderIncome();
-  document.getElementById('inc-name').value = '';
-  document.getElementById('inc-amount').value = '';
-  document.getElementById('inc-note').value = '';
-  document.getElementById('income-form').classList.remove('open');
+function toggleForm(id) { document.getElementById(id).classList.toggle('open'); }
+function showInvTab(t, el) {
+  document.getElementById('inv-raw').style.display = t==='raw'?'block':'none';
+  document.getElementById('inv-product').style.display = t==='product'?'block':'none';
+  document.querySelectorAll('.neo-pill-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ============ SEARCH ============
+function globalSearch(q) {
+  const box = document.getElementById('search-results');
+  if(!q||q.length<2) { box.style.display='none'; return; }
+  q = q.toLowerCase();
+  let results = [];
+  D.income.forEach(x=>{ if(x.name.toLowerCase().includes(q)||x.cat.toLowerCase().includes(q)) results.push({type:'💰 ආදායම',name:x.name,val:fmt(x.amount),page:'income'}); });
+  D.expenses.forEach(x=>{ if(x.name.toLowerCase().includes(q)) results.push({type:'💸 වියදම',name:x.name,val:fmt(x.amount),page:'expense'}); });
+  D.rawMaterials.forEach(x=>{ if(x.name.toLowerCase().includes(q)) results.push({type:'🌾 අමු',name:x.name,val:x.qty+' '+x.unit,page:'inventory'}); });
+  D.products.forEach(x=>{ if(x.name.toLowerCase().includes(q)) results.push({type:'🥐 නිමි',name:x.name,val:fmt(x.price),page:'inventory'}); });
+  D.customers.forEach(x=>{ if(x.name.toLowerCase().includes(q)||x.phone.includes(q)) results.push({type:'👥 ගනුකරු',name:x.name,val:x.phone,page:'customers'}); });
+  D.suppliers.forEach(x=>{ if(x.name.toLowerCase().includes(q)) results.push({type:'🚚 සැපයුම්',name:x.name,val:x.phone,page:'suppliers'}); });
+  salesReturns.forEach(x=>{ if(x.prodName.toLowerCase().includes(q)) results.push({type:x.type==='sale'?'🛒 Sale':'↩️ Return',name:x.prodName,val:fmt(x.total),page:'salesreturn'}); });
+  if(!results.length) { box.innerHTML='<div style="padding:12px;text-align:center;color:var(--muted);font-size:12px">ප්‍රතිඵල නොමැත</div>'; box.style.display='block'; return; }
+  box.style.display='block';
+  box.innerHTML = results.slice(0,8).map(r=>`<div class="sr-result-item" onclick="showPageByName('${r.page}')"><span>${r.name}</span><span class="sr-result-type">${r.type} · ${r.val}</span></div>`).join('');
+}
+
+function showPageByName(p) {
+  document.getElementById('search-results').style.display='none';
+  document.getElementById('global-search').value='';
+  const btns = document.querySelectorAll('.tab-btn');
+  const pages = ['dashboard','income','expense','inventory','salesreturn','credit','customers','recipes','suppliers','assets','liabilities','equity','salary','reports','notifications'];
+  const idx = pages.indexOf(p);
+  if(idx>=0) showPage(p, btns[idx]);
+}
+
+function clearSearch() { document.getElementById('global-search').value=''; document.getElementById('search-results').style.display='none'; }
+
+// ============ DAILY TARGET ============
+function setDailyTarget() {
+  const v = parseFloat(document.getElementById('target-input').value);
+  if(!v||v<=0) return;
+  D.dailyTarget = v; save();
   renderDashboard();
+}
+
+// ============ ADD FUNCTIONS ============
+function addIncome() {
+  const name=document.getElementById('inc-name').value.trim();
+  const amount=parseFloat(document.getElementById('inc-amount').value);
+  const date=document.getElementById('inc-date').value||today();
+  const cat=document.getElementById('inc-cat').value;
+  const note=document.getElementById('inc-note').value.trim();
+  if(!name||!amount) return alert('නම සහ මුදල ලියන්න!');
+  D.income.push({id:Date.now(),name,amount,date,cat,note});
+  save(); renderIncome(); renderDashboard();
+  document.getElementById('inc-name').value=''; document.getElementById('inc-amount').value=''; document.getElementById('inc-note').value='';
+  document.getElementById('income-form').classList.remove('open');
+  checkNotifications();
 }
 
 function addExpense() {
-  const name = document.getElementById('exp-name').value.trim();
-  const amount = parseFloat(document.getElementById('exp-amount').value);
-  const date = document.getElementById('exp-date').value || today();
-  const cat = document.getElementById('exp-cat').value;
-  const note = document.getElementById('exp-note').value.trim();
-  if (!name || !amount) return alert('නම සහ මුදල ලියන්න!');
-  data.expenses.push({id: Date.now(), name, amount, date, cat, note});
-  save(); renderExpense();
-  document.getElementById('exp-name').value = '';
-  document.getElementById('exp-amount').value = '';
-  document.getElementById('exp-note').value = '';
+  const name=document.getElementById('exp-name').value.trim();
+  const amount=parseFloat(document.getElementById('exp-amount').value);
+  const date=document.getElementById('exp-date').value||today();
+  const cat=document.getElementById('exp-cat').value;
+  const note=document.getElementById('exp-note').value.trim();
+  if(!name||!amount) return alert('නම සහ මුදල ලියන්න!');
+  D.expenses.push({id:Date.now(),name,amount,date,cat,note});
+  save(); renderExpense(); renderDashboard();
+  document.getElementById('exp-name').value=''; document.getElementById('exp-amount').value=''; document.getElementById('exp-note').value='';
   document.getElementById('expense-form').classList.remove('open');
-  renderDashboard();
-}
-
-function addAsset() {
-  const name = document.getElementById('ast-name').value.trim();
-  const val = parseFloat(document.getElementById('ast-val').value);
-  const date = document.getElementById('ast-date').value || today();
-  const cat = document.getElementById('ast-cat').value;
-  const note = document.getElementById('ast-note').value.trim();
-  if (!name || !val) return alert('නම සහ වටිනාකම ලියන්න!');
-  data.assets.push({id: Date.now(), name, val, date, cat, note});
-  save(); renderAssets();
-  document.getElementById('ast-name').value = '';
-  document.getElementById('ast-val').value = '';
-  document.getElementById('ast-note').value = '';
-  document.getElementById('asset-form').classList.remove('open');
-  renderDashboard();
-}
-
-function addLiability() {
-  const name = document.getElementById('lib-name').value.trim();
-  const val = parseFloat(document.getElementById('lib-val').value);
-  const date = document.getElementById('lib-date').value || today();
-  const cat = document.getElementById('lib-cat').value;
-  const note = document.getElementById('lib-note').value.trim();
-  if (!name || !val) return alert('නම සහ මුදල ලියන්න!');
-  data.liabilities.push({id: Date.now(), name, val, date, cat, note});
-  save(); renderLiabilities();
-  document.getElementById('lib-name').value = '';
-  document.getElementById('lib-val').value = '';
-  document.getElementById('lib-note').value = '';
-  document.getElementById('liability-form').classList.remove('open');
-  renderDashboard();
-}
-
-function addEquity() {
-  const name = document.getElementById('eqt-name').value.trim();
-  const val = parseFloat(document.getElementById('eqt-val').value);
-  const date = document.getElementById('eqt-date').value || today();
-  const cat = document.getElementById('eqt-cat').value;
-  const note = document.getElementById('eqt-note').value.trim();
-  if (!name || !val) return alert('නම සහ මුදල ලියන්න!');
-  data.equity.push({id: Date.now(), name, val, date, cat, note});
-  save(); renderEquity();
-  document.getElementById('eqt-name').value = '';
-  document.getElementById('eqt-val').value = '';
-  document.getElementById('eqt-note').value = '';
-  document.getElementById('equity-form').classList.remove('open');
-  renderDashboard();
 }
 
 function addRaw() {
-  const name = document.getElementById('raw-name').value.trim();
-  const qty = parseFloat(document.getElementById('raw-qty').value);
-  const unit = document.getElementById('raw-unit').value;
-  const min = parseFloat(document.getElementById('raw-min').value) || 5;
-  const price = parseFloat(document.getElementById('raw-price').value) || 0;
-  if (!name || isNaN(qty)) return alert('නම සහ ප්‍රමාණය ලියන්න!');
-  data.rawMaterials.push({id: Date.now(), name, qty, unit, min, price});
-  save(); renderRaw();
-  document.getElementById('raw-name').value = '';
-  document.getElementById('raw-qty').value = '';
-  document.getElementById('raw-min').value = '';
-  document.getElementById('raw-price').value = '';
+  const name=document.getElementById('raw-name').value.trim();
+  const qty=parseFloat(document.getElementById('raw-qty').value);
+  const unit=document.getElementById('raw-unit').value;
+  const min=parseFloat(document.getElementById('raw-min').value)||5;
+  const price=parseFloat(document.getElementById('raw-price').value)||0;
+  const suppId=document.getElementById('raw-supplier').value;
+  if(!name||isNaN(qty)) return alert('නම සහ ප්‍රමාණය ලියන්න!');
+  D.rawMaterials.push({id:Date.now(),name,qty,unit,min,price,suppId});
+  save(); renderRaw(); renderDashboard(); checkNotifications();
+  document.getElementById('raw-name').value=''; document.getElementById('raw-qty').value=''; document.getElementById('raw-min').value=''; document.getElementById('raw-price').value='';
   document.getElementById('raw-form').classList.remove('open');
-  renderDashboard();
 }
 
 function addProduct() {
-  const name = document.getElementById('prod-name').value.trim();
-  const qty = parseFloat(document.getElementById('prod-qty').value);
-  const unit = document.getElementById('prod-unit').value;
-  const cost = parseFloat(document.getElementById('prod-cost').value) || 0;
-  const price = parseFloat(document.getElementById('prod-price').value) || 0;
-  const min = parseFloat(document.getElementById('prod-min').value) || 10;
-  if (!name || isNaN(qty)) return alert('නම සහ ප්‍රමාණය ලියන්න!');
-  data.products.push({id: Date.now(), name, qty, unit, cost, price, min});
-  save(); renderProducts();
-  document.getElementById('prod-name').value = '';
-  document.getElementById('prod-qty').value = '';
-  document.getElementById('prod-cost').value = '';
-  document.getElementById('prod-price').value = '';
-  document.getElementById('prod-min').value = '';
-  document.getElementById('product-form').classList.remove('open');
-  renderDashboard();
+  const name=document.getElementById('prod-name').value.trim();
+  const qty=parseFloat(document.getElementById('prod-qty').value);
+  const unit=document.getElementById('prod-unit').value;
+  const cost=parseFloat(document.getElementById('prod-cost').value)||0;
+  const price=parseFloat(document.getElementById('prod-price').value)||0;
+  const min=parseFloat(document.getElementById('prod-min').value)||10;
+  if(!name||isNaN(qty)) return alert('නම සහ ප්‍රමාණය ලියන්න!');
+  D.products.push({id:Date.now(),name,qty,unit,cost,price,min});
+  save(); renderProducts(); renderDashboard(); checkNotifications();
+  document.getElementById('prod-name').value=''; document.getElementById('prod-qty').value=''; document.getElementById('prod-cost').value=''; document.getElementById('prod-price').value=''; document.getElementById('prod-min').value='';
+  document.getElementById('prod-form').classList.remove('open');
 }
 
-// ======= UPDATE QTY =======
-function updateQty(type, id, delta) {
-  const arr = type === 'raw' ? data.rawMaterials : data.products;
-  const item = arr.find(x => x.id === id);
-  if (item) {
-    item.qty = Math.max(0, item.qty + delta);
-    save();
-    if (type === 'raw') renderRaw(); else renderProducts();
-    renderDashboard();
-  }
+function updateQty(type,id,delta) {
+  const arr = type==='raw'?D.rawMaterials:D.products;
+  const item = arr.find(x=>x.id===id);
+  if(item) { item.qty=Math.max(0,item.qty+delta); save(); if(type==='raw')renderRaw();else renderProducts(); renderDashboard(); checkNotifications(); }
 }
 
-// ======= DELETE =======
-function deleteItem(type, id) {
-  if (!confirm('මකා දමන්නද?')) return;
-  if (type === 'income') data.income = data.income.filter(x => x.id !== id);
-  else if (type === 'expense') data.expenses = data.expenses.filter(x => x.id !== id);
-  else if (type === 'asset') data.assets = data.assets.filter(x => x.id !== id);
-  else if (type === 'liability') data.liabilities = data.liabilities.filter(x => x.id !== id);
-  else if (type === 'equity') data.equity = data.equity.filter(x => x.id !== id);
-  else if (type === 'raw') data.rawMaterials = data.rawMaterials.filter(x => x.id !== id);
-  else if (type === 'product') data.products = data.products.filter(x => x.id !== id);
-  save(); render();
+function deleteItem(type,id) {
+  if(!confirm('මකා දමන්නද?')) return;
+  if(type==='income') D.income=D.income.filter(x=>x.id!==id);
+  else if(type==='expense') D.expenses=D.expenses.filter(x=>x.id!==id);
+  else if(type==='asset') D.assets=D.assets.filter(x=>x.id!==id);
+  else if(type==='liability') D.liabilities=D.liabilities.filter(x=>x.id!==id);
+  else if(type==='equity') D.equity=D.equity.filter(x=>x.id!==id);
+  else if(type==='raw') D.rawMaterials=D.rawMaterials.filter(x=>x.id!==id);
+  else if(type==='product') D.products=D.products.filter(x=>x.id!==id);
+  else if(type==='customer') D.customers=D.customers.filter(x=>x.id!==id);
+  else if(type==='supplier') D.suppliers=D.suppliers.filter(x=>x.id!==id);
+  else if(type==='recipe') D.recipes=D.recipes.filter(x=>x.id!==id);
+  else if(type==='order') D.orders=D.orders.filter(x=>x.id!==id);
+  save(); renderPage(currentPage); renderDashboard(); checkNotifications();
 }
 
-// ======= RENDER HELPERS =======
-function emptyState(icon, text) {
-  return `<div class="empty-state"><div class="empty-icon">${icon}</div><p>${text}</p></div>`;
+function addAsset() {
+  const name=document.getElementById('ast-name').value.trim(), val=parseFloat(document.getElementById('ast-val').value), date=document.getElementById('ast-date').value||today(), cat=document.getElementById('ast-cat').value, note=document.getElementById('ast-note').value.trim();
+  if(!name||!val) return alert('නම සහ වටිනාකම ලියන්න!');
+  D.assets.push({id:Date.now(),name,val,date,cat,note}); save(); renderAssets(); renderDashboard();
+  document.getElementById('ast-name').value=''; document.getElementById('ast-val').value=''; document.getElementById('ast-note').value='';
+  document.getElementById('asset-form').classList.remove('open');
 }
 
-function stockBadge(qty, min) {
-  if (qty <= 0) return '<span class="stock-badge stock-low">🚫 නිමී ගොස්</span>';
-  if (qty <= min) return '<span class="stock-badge stock-low">⚠️ අඩු</span>';
-  if (qty <= min * 2) return '<span class="stock-badge stock-med">⚡ මධ්‍යම</span>';
-  return '<span class="stock-badge stock-ok">✅ හොඳ</span>';
+function addLiability() {
+  const name=document.getElementById('lib-name').value.trim(), val=parseFloat(document.getElementById('lib-val').value), date=document.getElementById('lib-date').value||today(), cat=document.getElementById('lib-cat').value, note=document.getElementById('lib-note').value.trim();
+  if(!name||!val) return alert('නම සහ මුදල ලියන්න!');
+  D.liabilities.push({id:Date.now(),name,val,date,cat,note}); save(); renderLiabilities(); renderDashboard();
+  document.getElementById('lib-name').value=''; document.getElementById('lib-val').value=''; document.getElementById('lib-note').value='';
+  document.getElementById('lib-form').classList.remove('open');
 }
 
-// ======= RENDER INCOME =======
-function renderIncome() {
-  const el = document.getElementById('income-list');
-  if (!data.income.length) { el.innerHTML = emptyState('💰', 'ආදායම් නොමැත'); return; }
-  el.innerHTML = [...data.income].reverse().map(i => `
-    <div class="list-item income-item">
-      <div class="item-icon">💰</div>
-      <div class="item-info">
-        <div class="item-name">${i.name}</div>
-        <div class="item-sub">${i.cat} · ${fmtDate(i.date)}${i.note ? ' · ' + i.note : ''}</div>
-        <div class="item-actions">
-          <button class="btn btn-danger" onclick="deleteItem('income',${i.id})">🗑 මකන්න</button>
+function addEquity() {
+  const name=document.getElementById('eqt-name').value.trim(), val=parseFloat(document.getElementById('eqt-val').value), date=document.getElementById('eqt-date').value||today(), cat=document.getElementById('eqt-cat').value, note=document.getElementById('eqt-note').value.trim();
+  if(!name||!val) return alert('නම සහ මුදල ලියන්න!');
+  D.equity.push({id:Date.now(),name,val,date,cat,note}); save(); renderEquity(); renderDashboard();
+  document.getElementById('eqt-name').value=''; document.getElementById('eqt-val').value=''; document.getElementById('eqt-note').value='';
+  document.getElementById('eqt-form').classList.remove('open');
+}
+
+// ============ CUSTOMERS ============
+function addCustomer() {
+  const name=document.getElementById('cust-name').value.trim(), phone=document.getElementById('cust-phone').value.trim(), type=document.getElementById('cust-type').value, addr=document.getElementById('cust-addr').value.trim(), note=document.getElementById('cust-note').value.trim();
+  if(!name) return alert('නම ලියන්න!');
+  D.customers.push({id:Date.now(),name,phone,type,addr,note}); save(); renderCustomers(); populateSRDropdowns(); populateCreditDropdowns();
+  document.getElementById('cust-name').value=''; document.getElementById('cust-phone').value=''; document.getElementById('cust-addr').value=''; document.getElementById('cust-note').value='';
+  document.getElementById('cust-form').classList.remove('open');
+}
+
+function renderCustomers() {
+  const el=document.getElementById('customer-list'); if(!el) return;
+  if(!D.customers.length) { el.innerHTML=emptyState('👥','ගනුකරු නොමැත'); return; }
+  el.innerHTML=D.customers.map(c=>{
+    const custSales = salesReturns.filter(x=>x.type==='sale'&&x.custId===c.id).reduce((s,x)=>s+x.total,0);
+    const custCredit = credits.filter(x=>x.custId===c.id&&x.status!=='paid').reduce((s,x)=>s+x.balance,0);
+    const txCount = salesReturns.filter(x=>x.custId===c.id).length;
+    return `<div class="customer-card">
+      <div class="cust-header">
+        <div class="cust-avatar">👤</div>
+        <div><div class="cust-name">${c.name}</div><div class="cust-sub">${c.phone||'දුරකථන නොමැත'} · <span class="badge stock-ok">${c.type}</span></div></div>
+        <div style="margin-left:auto;display:flex;gap:6px">
+          ${c.phone?`<button onclick="window.open('https://wa.me/94${c.phone.replace(/^0/,'').replace(/\s/,'')}','_blank')" style="background:rgba(37,211,102,0.15);border:1px solid rgba(37,211,102,0.3);border-radius:8px;padding:5px 9px;cursor:pointer;font-size:14px">📱</button>`:''}
+          <button class="btn btn-danger" onclick="deleteItem('customer',${c.id})">🗑</button>
         </div>
       </div>
-      <div class="item-amount green">${fmt(i.amount)}</div>
-    </div>`).join('');
-}
-
-// ======= RENDER EXPENSE =======
-function renderExpense() {
-  const el = document.getElementById('expense-list');
-  if (!data.expenses.length) { el.innerHTML = emptyState('💸', 'වියදම් නොමැත'); return; }
-  el.innerHTML = [...data.expenses].reverse().map(i => `
-    <div class="list-item expense-item">
-      <div class="item-icon">💸</div>
-      <div class="item-info">
-        <div class="item-name">${i.name}</div>
-        <div class="item-sub">${i.cat} · ${fmtDate(i.date)}${i.note ? ' · ' + i.note : ''}</div>
-        <div class="item-actions">
-          <button class="btn btn-danger" onclick="deleteItem('expense',${i.id})">🗑 මකන්න</button>
-        </div>
+      <div class="cust-stats">
+        <div class="cust-stat"><div class="cust-stat-val" style="color:var(--green)">${fmt(custSales)}</div><div class="cust-stat-lbl">මුළු මිලදී ගැනීම්</div></div>
+        <div class="cust-stat"><div class="cust-stat-val" style="color:var(--red)">${fmt(custCredit)}</div><div class="cust-stat-lbl">ගෙවිය යුතු ණය</div></div>
+        <div class="cust-stat"><div class="cust-stat-val" style="color:var(--accent2)">${txCount}</div><div class="cust-stat-lbl">ගනුදෙනු</div></div>
       </div>
-      <div class="item-amount red">-${fmt(i.amount)}</div>
-    </div>`).join('');
-}
-
-// ======= RENDER ASSETS =======
-function renderAssets() {
-  const el = document.getElementById('asset-list');
-  if (!data.assets.length) { el.innerHTML = emptyState('🏦', 'වත්කම් නොමැත'); return; }
-  el.innerHTML = [...data.assets].reverse().map(i => `
-    <div class="list-item asset-item">
-      <div class="item-icon">🏦</div>
-      <div class="item-info">
-        <div class="item-name">${i.name}</div>
-        <div class="item-sub">${i.cat} · ${fmtDate(i.date)}${i.note ? ' · ' + i.note : ''}</div>
-        <div class="item-actions">
-          <button class="btn btn-danger" onclick="deleteItem('asset',${i.id})">🗑 මකන්න</button>
-        </div>
-      </div>
-      <div class="item-amount blue">${fmt(i.val)}</div>
-    </div>`).join('');
-}
-
-// ======= RENDER LIABILITIES =======
-function renderLiabilities() {
-  const el = document.getElementById('liability-list');
-  if (!data.liabilities.length) { el.innerHTML = emptyState('📋', 'වගකීම් නොමැත'); return; }
-  el.innerHTML = [...data.liabilities].reverse().map(i => `
-    <div class="list-item liability-item">
-      <div class="item-icon">📋</div>
-      <div class="item-info">
-        <div class="item-name">${i.name}</div>
-        <div class="item-sub">${i.cat} · ${fmtDate(i.date)}${i.note ? ' · ' + i.note : ''}</div>
-        <div class="item-actions">
-          <button class="btn btn-danger" onclick="deleteItem('liability',${i.id})">🗑 මකන්න</button>
-        </div>
-      </div>
-      <div class="item-amount orange">${fmt(i.val)}</div>
-    </div>`).join('');
-}
-
-// ======= RENDER EQUITY =======
-function renderEquity() {
-  const el = document.getElementById('equity-list');
-  if (!data.equity.length) { el.innerHTML = emptyState('👤', 'හිමිකම් නොමැත'); return; }
-  el.innerHTML = [...data.equity].reverse().map(i => `
-    <div class="list-item equity-item">
-      <div class="item-icon">👤</div>
-      <div class="item-info">
-        <div class="item-name">${i.name}</div>
-        <div class="item-sub">${i.cat} · ${fmtDate(i.date)}${i.note ? ' · ' + i.note : ''}</div>
-        <div class="item-actions">
-          <button class="btn btn-danger" onclick="deleteItem('equity',${i.id})">🗑 මකන්න</button>
-        </div>
-      </div>
-      <div class="item-amount purple">${fmt(i.val)}</div>
-    </div>`).join('');
-}
-
-// ======= RENDER RAW =======
-function renderRaw() {
-  const el = document.getElementById('raw-list');
-  if (!data.rawMaterials.length) { el.innerHTML = emptyState('🌾', 'අමුද්‍රව්‍ය නොමැත'); return; }
-  el.innerHTML = data.rawMaterials.map(i => `
-    <div class="list-item raw-item">
-      <div class="item-icon">🌾</div>
-      <div class="item-info">
-        <div class="item-name">${i.name} ${stockBadge(i.qty, i.min)}</div>
-        <div class="item-sub">මිල: ${fmt(i.price)}/${i.unit} · අඩු alert: ${i.min} ${i.unit}</div>
-        <div class="item-actions" style="align-items:center;gap:8px;margin-top:8px">
-          <button onclick="updateQty('raw',${i.id},-1)" style="background:rgba(224,85,85,0.2);border:1px solid rgba(224,85,85,0.4);color:#e05555;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:16px;">−</button>
-          <span style="font-size:15px;font-weight:700;color:#fff">${i.qty} ${i.unit}</span>
-          <button onclick="updateQty('raw',${i.id},1)" style="background:rgba(61,186,120,0.2);border:1px solid rgba(61,186,120,0.4);color:#3dba78;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:16px;">+</button>
-          <button class="btn btn-danger" onclick="deleteItem('raw',${i.id})">🗑</button>
-        </div>
-      </div>
-      <div class="item-amount teal" style="text-align:right">${fmt(i.qty * i.price)}</div>
-    </div>`).join('');
-}
-
-// ======= RENDER PRODUCTS =======
-function renderProducts() {
-  const el = document.getElementById('product-list');
-  if (!data.products.length) { el.innerHTML = emptyState('🥐', 'නිෂ්පාදන නොමැත'); return; }
-  el.innerHTML = data.products.map(i => `
-    <div class="list-item product-item">
-      <div class="item-icon">🥐</div>
-      <div class="item-info">
-        <div class="item-name">${i.name} ${stockBadge(i.qty, i.min)}</div>
-        <div class="item-sub">නිෂ්පාදන: ${fmt(i.cost)} · විකිණීම: ${fmt(i.price)} · ලාභ: ${fmt(i.price-i.cost)}/${i.unit}</div>
-        <div class="item-actions" style="align-items:center;gap:8px;margin-top:8px">
-          <button onclick="updateQty('product',${i.id},-1)" style="background:rgba(224,85,85,0.2);border:1px solid rgba(224,85,85,0.4);color:#e05555;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:16px;">−</button>
-          <span style="font-size:15px;font-weight:700;color:#fff">${i.qty} ${i.unit}</span>
-          <button onclick="updateQty('product',${i.id},1)" style="background:rgba(61,186,120,0.2);border:1px solid rgba(61,186,120,0.4);color:#3dba78;border-radius:6px;padding:4px 10px;cursor:pointer;font-size:16px;">+</button>
-          <button class="btn btn-danger" onclick="deleteItem('product',${i.id})">🗑</button>
-        </div>
-      </div>
-      <div class="item-amount gold" style="text-align:right">${i.qty} ${i.unit}</div>
-    </div>`).join('');
-}
-
-// ======= DASHBOARD =======
-function renderDashboard() {
-  const now = new Date();
-  const thisMonth = now.getMonth();
-  const thisYear = now.getFullYear();
-
-  document.getElementById('today-date').textContent = now.toLocaleDateString('si-LK', {year:'numeric', month:'long', day:'numeric'});
-
-  const monthIncome = data.income.filter(x => {
-    const d = new Date(x.date);
-    return d.getMonth() === thisMonth && d.getFullYear() === thisYear;
-  }).reduce((s, x) => s + x.amount, 0);
-
-  const monthExpense = data.expenses.filter(x => {
-    const d = new Date(x.date);
-    return d.getMonth() === thisMonth && d.getFullYear() === thisYear;
-  }).reduce((s, x) => s + x.amount, 0);
-
-  const profit = monthIncome - monthExpense;
-  const totalAssets = data.assets.reduce((s, x) => s + x.val, 0);
-  const totalLiab = data.liabilities.reduce((s, x) => s + x.val, 0);
-  const totalEquity = data.equity.reduce((s, x) => s + x.val, 0);
-
-  document.getElementById('dash-income').textContent = fmt(monthIncome);
-  document.getElementById('dash-expense').textContent = fmt(monthExpense);
-  const profEl = document.getElementById('dash-profit');
-  profEl.textContent = fmt(profit);
-  profEl.className = 'sum-val ' + (profit >= 0 ? 'green' : 'red');
-  document.getElementById('dash-assets').textContent = fmt(totalAssets);
-  document.getElementById('dash-liabilities').textContent = fmt(totalLiab);
-  document.getElementById('dash-equity').textContent = fmt(totalEquity);
-
-  // Recent transactions
-  const all = [
-    ...data.income.map(x => ({...x, type:'income'})),
-    ...data.expenses.map(x => ({...x, type:'expense'}))
-  ].sort((a,b) => new Date(b.date) - new Date(a.date)).slice(0,5);
-
-  const rt = document.getElementById('recent-transactions');
-  if (!all.length) { rt.innerHTML = emptyState('🧾', 'ගනුදෙනු නොමැත'); }
-  else {
-    rt.innerHTML = all.map(i => `
-      <div class="list-item ${i.type}-item">
-        <div class="item-icon">${i.type === 'income' ? '💰' : '💸'}</div>
-        <div class="item-info">
-          <div class="item-name">${i.name}</div>
-          <div class="item-sub">${i.cat} · ${fmtDate(i.date)}</div>
-        </div>
-        <div class="item-amount ${i.type === 'income' ? 'green' : 'red'}">${i.type === 'income' ? '+' : '-'}${fmt(i.amount)}</div>
-      </div>`).join('');
-  }
-
-  // Low stock
-  const lowRaw = data.rawMaterials.filter(x => x.qty <= x.min);
-  const lowProd = data.products.filter(x => x.qty <= x.min);
-  const allLow = [...lowRaw, ...lowProd];
-
-  const warn = document.getElementById('low-stock-warning');
-  if (allLow.length) {
-    warn.style.display = 'flex';
-    document.getElementById('low-stock-text').textContent = `${allLow.length} ද්‍රව්‍යයක් අඩු තොග තත්ත්වයේ ඇත!`;
-  } else {
-    warn.style.display = 'none';
-  }
-
-  const ls = document.getElementById('low-stock-list');
-  if (!allLow.length) { ls.innerHTML = emptyState('✅', 'සියලු තොග හොඳ තත්ත්වයේ'); }
-  else {
-    ls.innerHTML = allLow.map(i => `
-      <div class="list-item" style="--left-color:#e05555">
-        <div class="item-icon">${i.price !== undefined ? '🌾' : '🥐'}</div>
-        <div class="item-info">
-          <div class="item-name">${i.name}</div>
-          <div class="item-sub">ශේෂය: ${i.qty} ${i.unit} · අඩු alert: ${i.min} ${i.unit}</div>
-        </div>
-        <div class="item-amount red">⚠️</div>
-      </div>`).join('');
-  }
-}
-
-// ======= REPORTS =======
-function generateReport() {
-  const from = document.getElementById('rep-from').value;
-  const to = document.getElementById('rep-to').value;
-
-  let inc = data.income;
-  let exp = data.expenses;
-
-  if (from) { inc = inc.filter(x => x.date >= from); exp = exp.filter(x => x.date >= from); }
-  if (to) { inc = inc.filter(x => x.date <= to); exp = exp.filter(x => x.date <= to); }
-
-  const totalInc = inc.reduce((s,x) => s+x.amount, 0);
-  const totalExp = exp.reduce((s,x) => s+x.amount, 0);
-  const profit = totalInc - totalExp;
-
-  // Group by category
-  const incCats = {};
-  inc.forEach(x => { incCats[x.cat] = (incCats[x.cat]||0) + x.amount; });
-  const expCats = {};
-  exp.forEach(x => { expCats[x.cat] = (expCats[x.cat]||0) + x.amount; });
-
-  const el = document.getElementById('report-output');
-  el.innerHTML = `
-    <div class="report-period">
-      <span>📅 ${from ? fmtDate(from) : 'ආරම්භය'} සිට ${to ? fmtDate(to) : 'අද'} දක්වා</span>
-    </div>
-    <div class="profit-section">
-      <div class="section-title" style="margin-top:0">💰 ආදායම් සාරාංශය</div>
-      ${Object.entries(incCats).map(([k,v]) => `<div class="profit-row"><span>${k}</span><span style="color:var(--green)">${fmt(v)}</span></div>`).join('') || '<div class="profit-row"><span>ආදායම් නොමැත</span></div>'}
-      <hr class="profit-divider">
-      <div class="profit-row profit-total"><span>මුළු ආදායම</span><span style="color:var(--green)">${fmt(totalInc)}</span></div>
-
-      <div class="section-title" style="margin-top:14px">💸 වියදම් සාරාංශය</div>
-      ${Object.entries(expCats).map(([k,v]) => `<div class="profit-row"><span>${k}</span><span style="color:var(--red)">${fmt(v)}</span></div>`).join('') || '<div class="profit-row"><span>වියදම් නොමැත</span></div>'}
-      <hr class="profit-divider">
-      <div class="profit-row profit-total"><span>මුළු වියදම්</span><span style="color:var(--red)">${fmt(totalExp)}</span></div>
-      <hr class="profit-divider" style="border-top:2px solid var(--accent);margin:12px 0">
-      <div class="profit-row profit-total" style="font-size:18px">
-        <span>${profit >= 0 ? '📈 ශුද්ධ ලාභය' : '📉 ශුද්ධ අලාභය'}</span>
-        <span style="color:${profit >= 0 ? 'var(--green)' : 'var(--red)'}">${fmt(Math.abs(profit))}</span>
-      </div>
-    </div>`;
-
-  // Balance Sheet
-  const totalAst = data.assets.reduce((s,x) => s+x.val, 0);
-  const totalLib = data.liabilities.reduce((s,x) => s+x.val, 0);
-  const totalEqt = data.equity.reduce((s,x) => s+x.val, 0);
-  const rawVal = data.rawMaterials.reduce((s,x) => s+(x.qty*x.price),0);
-  const netWorth = totalAst + rawVal - totalLib;
-
-  document.getElementById('balance-sheet').innerHTML = `
-    <div class="balance-card">
-      <div class="balance-title">📦 වත්කම් (Assets)</div>
-      ${data.assets.map(x => `<div class="balance-row"><span>${x.name}</span><span style="color:var(--blue)">${fmt(x.val)}</span></div>`).join('') || '<div class="balance-row"><span>නොමැත</span></div>'}
-      <div class="balance-row"><span>🌾 තොග වටිනාකම</span><span style="color:#4dd9ac">${fmt(rawVal)}</span></div>
-      <div class="balance-total"><span>මුළු වත්කම්</span><span style="color:var(--blue)">${fmt(totalAst + rawVal)}</span></div>
-    </div>
-    <div class="balance-card">
-      <div class="balance-title">📋 වගකීම් (Liabilities)</div>
-      ${data.liabilities.map(x => `<div class="balance-row"><span>${x.name}</span><span style="color:#e08855">${fmt(x.val)}</span></div>`).join('') || '<div class="balance-row"><span>නොමැත</span></div>'}
-      <div class="balance-total"><span>මුළු වගකීම්</span><span style="color:#e08855">${fmt(totalLib)}</span></div>
-    </div>
-    <div class="balance-card">
-      <div class="balance-title">👤 හිමිකම් (Equity)</div>
-      ${data.equity.map(x => `<div class="balance-row"><span>${x.name}</span><span style="color:#a06ee8">${fmt(x.val)}</span></div>`).join('') || '<div class="balance-row"><span>නොමැත</span></div>'}
-      <div class="balance-total"><span>මුළු හිමිකම්</span><span style="color:#a06ee8">${fmt(totalEqt)}</span></div>
-    </div>
-    <div class="profit-section" style="margin-top:10px">
-      <div class="profit-row profit-total" style="font-size:17px">
-        <span>⚖️ ශුද්ධ වටිනාකම</span>
-        <span style="color:${netWorth >= 0 ? 'var(--green)' : 'var(--red)'}">${fmt(netWorth)}</span>
-      </div>
-    </div>`;
-}
-
-// ======= RAW STOCK REPORT =======
-function renderRawReport() {
-  const tbody = document.getElementById('raw-report-tbody');
-  const bars = document.getElementById('raw-stock-bars');
-  if (!tbody) return;
-
-  const items = data.rawMaterials;
-  document.getElementById('raw-total-types').textContent = items.length;
-  document.getElementById('raw-low-count').textContent = items.filter(x => x.qty <= x.min).length;
-  const totalVal = items.reduce((s,x) => s + (x.qty * x.price), 0);
-  document.getElementById('raw-total-val').textContent = fmt(totalVal);
-
-  if (!items.length) {
-    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">අමුද්‍රව්‍ය නොමැත</td></tr>';
-    bars.innerHTML = emptyState('🌾', 'අමුද්‍රව්‍ය නොමැත');
-    return;
-  }
-
-  tbody.innerHTML = items.map(i => {
-    const pct = i.min > 0 ? Math.min(100, Math.round((i.qty / (i.min * 3)) * 100)) : 100;
-    const badge = i.qty <= 0 ? 'stock-low' : i.qty <= i.min ? 'stock-low' : i.qty <= i.min*2 ? 'stock-med' : 'stock-ok';
-    const statusText = i.qty <= 0 ? '🚫 නිම්' : i.qty <= i.min ? '⚠️ අඩු' : i.qty <= i.min*2 ? '⚡ මධ්‍යම' : '✅ හොඳ';
-    return `<tr>
-      <td style="font-weight:600">${i.name}</td>
-      <td>${i.qty} ${i.unit}</td>
-      <td style="color:var(--muted)">${i.min} ${i.unit}</td>
-      <td><span class="stock-badge ${badge}">${statusText}</span></td>
-      <td style="color:#4dd9ac">${fmt(i.qty * i.price)}</td>
-    </tr>`;
-  }).join('');
-
-  bars.innerHTML = items.map(i => {
-    const pct = i.min > 0 ? Math.min(100, Math.round((i.qty / (i.min * 3)) * 100)) : 100;
-    const col = i.qty <= i.min ? '#e05555' : i.qty <= i.min*2 ? '#f5c518' : '#3dba78';
-    return `<div style="background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:8px">
-      <div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:13px">
-        <span style="font-weight:600">${i.name}</span>
-        <span style="color:#4dd9ac">${i.qty} / ${i.min*3} ${i.unit}</span>
-      </div>
-      <div class="salary-bar-wrap">
-        <div class="salary-bar" style="width:${pct}%;background:${col}"></div>
-      </div>
-      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:4px">
-        <span>Alert: ${i.min} ${i.unit}</span>
-        <span>${pct}%</span>
-      </div>
+      ${c.addr?`<div style="font-size:11px;color:var(--muted);margin-top:6px">📍 ${c.addr}</div>`:''}
     </div>`;
   }).join('');
 }
 
-// ======= PRODUCT STOCK REPORT =======
-function renderProdReport() {
-  const tbody = document.getElementById('prod-report-tbody');
-  const bars = document.getElementById('prod-stock-bars');
-  if (!tbody) return;
+// ============ SUPPLIERS ============
+function addSupplier() {
+  const name=document.getElementById('sup-name').value.trim(), phone=document.getElementById('sup-phone').value.trim(), goods=document.getElementById('sup-goods').value.trim(), addr=document.getElementById('sup-addr').value.trim(), note=document.getElementById('sup-note').value.trim();
+  if(!name) return alert('නම ලියන්න!');
+  D.suppliers.push({id:Date.now(),name,phone,goods,addr,note}); save(); renderSuppliers(); populateSupplierDropdowns();
+  document.getElementById('sup-name').value=''; document.getElementById('sup-phone').value=''; document.getElementById('sup-goods').value=''; document.getElementById('sup-addr').value=''; document.getElementById('sup-note').value='';
+  document.getElementById('sup-form').classList.remove('open');
+}
 
-  const items = data.products;
-  document.getElementById('prod-total-types').textContent = items.length;
-  document.getElementById('prod-low-count').textContent = items.filter(x => x.qty <= x.min).length;
-  const totalSale = items.reduce((s,x) => s + (x.qty * x.price), 0);
-  document.getElementById('prod-total-sale').textContent = fmt(totalSale);
+function addOrder() {
+  const supId=document.getElementById('ord-sup').value, desc=document.getElementById('ord-desc').value.trim(), amount=parseFloat(document.getElementById('ord-amount').value)||0, date=document.getElementById('ord-date').value||today(), status=document.getElementById('ord-status').value;
+  if(!desc) return alert('විස්තරය ලියන්න!');
+  const sup = D.suppliers.find(x=>x.id==supId);
+  D.orders.push({id:Date.now(),supId,supName:sup?sup.name:'',desc,amount,date,status}); save(); renderSuppliers();
+  document.getElementById('ord-desc').value=''; document.getElementById('ord-amount').value='';
+}
 
-  if (!items.length) {
-    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:20px">නිෂ්පාදන නොමැත</td></tr>';
-    bars.innerHTML = emptyState('🥐', 'නිෂ්පාදන නොමැත');
-    return;
+function renderSuppliers() {
+  const sl=document.getElementById('supplier-list'); if(!sl) return;
+  if(!D.suppliers.length) { sl.innerHTML=emptyState('🚚','සැපයුම්කරුවන් නොමැත'); }
+  else sl.innerHTML=D.suppliers.map(s=>`<div class="supplier-card">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div class="item-icon">🚚</div>
+      <div style="flex:1"><div style="font-size:13px;font-weight:700;color:var(--text2)">${s.name}</div><div style="font-size:11px;color:var(--muted)">${s.phone||''} · ${s.goods||''}</div></div>
+      <div style="display:flex;gap:5px">
+        ${s.phone?`<button onclick="window.open('https://wa.me/94${s.phone.replace(/^0/,'').replace(/\s/,'')}','_blank')" style="background:rgba(37,211,102,0.15);border:1px solid rgba(37,211,102,0.3);border-radius:8px;padding:5px 9px;cursor:pointer;font-size:14px">📱</button>`:''}
+        <button class="btn btn-danger" onclick="deleteItem('supplier',${s.id})">🗑</button>
+      </div>
+    </div>
+    ${s.addr?`<div style="font-size:11px;color:var(--muted);margin-top:5px">📍 ${s.addr}</div>`:''}
+  </div>`).join('');
+  const ol=document.getElementById('order-list'); if(!ol) return;
+  if(!D.orders.length) { ol.innerHTML=emptyState('📦','ඇණවුම් නොමැත'); return; }
+  ol.innerHTML=[...D.orders].reverse().map(o=>`<div class="list-item" style="margin-bottom:8px">
+    <div class="item-icon">📦</div>
+    <div class="item-info">
+      <div class="item-name">${o.desc}</div>
+      <div class="item-sub">${o.supName} · ${fmtD(o.date)} · <span class="badge ${o.status==='ලැබී ඇත'?'badge-paid':o.status==='බලාපොරොත්තුවෙන්'?'badge-pending':'badge-return'}">${o.status}</span></div>
+      <div class="item-actions"><button class="btn btn-danger" onclick="deleteItem('order',${o.id})">🗑</button></div>
+    </div>
+    <div class="item-amount ${o.status==='ලැබී ඇත'?'green':'orange'}">${fmt(o.amount)}</div>
+  </div>`).join('');
+}
+
+function populateSupplierDropdowns() {
+  ['raw-supplier','ord-sup'].forEach(id=>{
+    const sel=document.getElementById(id); if(!sel) return;
+    const cur=sel.value;
+    sel.innerHTML='<option value="">-- සැපයුම්කරු --</option>';
+    D.suppliers.forEach(s=>{ const o=document.createElement('option'); o.value=s.id; o.textContent=s.name; sel.appendChild(o); });
+    if(cur) sel.value=cur;
+  });
+}
+
+// ============ RECIPES ============
+let recipeIngRows = 0;
+function addRecipeIngRow() {
+  recipeIngRows++;
+  const wrap = document.getElementById('recipe-ingredients-list');
+  const div = document.createElement('div');
+  div.id='rec-ing-'+recipeIngRows;
+  div.style.cssText='display:grid;grid-template-columns:1fr 80px 80px 30px;gap:6px;margin-bottom:8px;align-items:end';
+  div.innerHTML=`<select style="background:rgba(255,255,255,0.06);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-size:12px;padding:8px 10px;outline:none">
+    <option value="">-- අමු --</option>
+    ${D.rawMaterials.map(r=>`<option value="${r.id}">${r.name}</option>`).join('')}
+  </select>
+  <input type="number" placeholder="qty" style="background:rgba(255,255,255,0.06);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-size:12px;padding:8px 10px;outline:none">
+  <input type="text" placeholder="unit" style="background:rgba(255,255,255,0.06);border:1px solid var(--border2);border-radius:8px;color:var(--text);font-size:12px;padding:8px 10px;outline:none">
+  <button onclick="this.parentElement.remove()" style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);border-radius:8px;color:var(--red);padding:8px;cursor:pointer">✕</button>`;
+  wrap.appendChild(div);
+}
+
+function saveRecipe() {
+  const prodId=document.getElementById('rec-product').value, batch=parseFloat(document.getElementById('rec-batch').value)||1, note=document.getElementById('rec-note').value.trim();
+  if(!prodId) return alert('නිෂ්පාදනය තෝරන්න!');
+  const prod=D.products.find(x=>x.id==prodId); if(!prod) return;
+  const rows=document.querySelectorAll('#recipe-ingredients-list > div');
+  const ingredients=[];
+  rows.forEach(row=>{
+    const sels=row.querySelectorAll('select,input');
+    const rawId=sels[0].value, qty=parseFloat(sels[1].value)||0, unit=sels[2].value;
+    if(rawId&&qty>0) { const raw=D.rawMaterials.find(x=>x.id==rawId); ingredients.push({rawId,rawName:raw?raw.name:'',qty,unit}); }
+  });
+  if(!ingredients.length) return alert('අමුද්‍රව්‍ය එකතු කරන්න!');
+  const existing=D.recipes.findIndex(x=>x.prodId==prodId);
+  const rec={id:Date.now(),prodId,prodName:prod.name,batch,ingredients,note};
+  if(existing>=0) D.recipes[existing]=rec; else D.recipes.push(rec);
+  save(); renderRecipes(); populateRecipeDropdowns();
+  document.getElementById('rec-product').value=''; document.getElementById('rec-batch').value=''; document.getElementById('recipe-ingredients-list').innerHTML=''; document.getElementById('rec-note').value='';
+  document.getElementById('recipe-form').classList.remove('open');
+}
+
+function renderRecipes() {
+  const el=document.getElementById('recipe-list'); if(!el) return;
+  if(!D.recipes.length) { el.innerHTML=emptyState('📋','Recipes නොමැත'); return; }
+  el.innerHTML=D.recipes.map(r=>`<div class="recipe-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+      <div><div style="font-size:14px;font-weight:700;color:var(--text2)">🥐 ${r.prodName}</div><div style="font-size:11px;color:var(--muted)">Batch: ${r.batch} units</div></div>
+      <button class="btn btn-danger" onclick="deleteItem('recipe',${r.id})">🗑</button>
+    </div>
+    ${r.ingredients.map(i=>`<div class="recipe-ingredient"><span>${i.rawName}</span><span style="color:var(--cyan)">${i.qty} ${i.unit}</span></div>`).join('')}
+    ${r.note?`<div style="font-size:11px;color:var(--muted);margin-top:6px">${r.note}</div>`:''}
+  </div>`).join('');
+}
+
+function populateRecipeDropdowns() {
+  const ps=document.getElementById('rec-product'); if(!ps) return;
+  const cur=ps.value; ps.innerHTML='<option value="">-- නිෂ්පාදනය --</option>';
+  D.products.forEach(p=>{const o=document.createElement('option');o.value=p.id;o.textContent=p.name;ps.appendChild(o);}); if(cur)ps.value=cur;
+  const us=document.getElementById('use-recipe-sel'); if(!us) return;
+  const ucur=us.value; us.innerHTML='<option value="">-- Recipe --</option>';
+  D.recipes.forEach(r=>{const o=document.createElement('option');o.value=r.id;o.textContent=r.prodName;us.appendChild(o);}); if(ucur)us.value=ucur;
+  us.onchange=previewRecipeUse;
+}
+
+function previewRecipeUse() {
+  const recId=document.getElementById('use-recipe-sel').value, batches=parseFloat(document.getElementById('use-batches').value)||1, el=document.getElementById('use-recipe-preview');
+  if(!recId) { el.innerHTML=''; return; }
+  const rec=D.recipes.find(x=>x.id==recId); if(!rec) return;
+  el.innerHTML=`<div style="background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:10px;padding:10px;margin-bottom:10px">
+    <div style="font-size:11px;color:var(--muted2);margin-bottom:6px">⚡ Stock ගෙවීම (${batches} batches):</div>
+    ${rec.ingredients.map(i=>{
+      const raw=D.rawMaterials.find(x=>x.id==i.rawId);
+      const need=i.qty*batches;
+      const ok=raw&&raw.qty>=need;
+      return `<div style="display:flex;justify-content:space-between;font-size:12px;padding:3px 0;color:${ok?'var(--green)':'var(--red)'}">
+        <span>${i.rawName}</span><span>${need} ${i.unit} ${ok?'✅':`⚠️ (ඇත: ${raw?raw.qty:0})`}</span></div>`;
+    }).join('')}
+  </div>`;
+}
+
+function useRecipe() {
+  const recId=document.getElementById('use-recipe-sel').value, batches=parseFloat(document.getElementById('use-batches').value)||1;
+  if(!recId) return alert('Recipe තෝරන්න!');
+  const rec=D.recipes.find(x=>x.id==recId); if(!rec) return;
+  for(const i of rec.ingredients) {
+    const raw=D.rawMaterials.find(x=>x.id==i.rawId);
+    if(!raw||raw.qty<i.qty*batches) return alert(`${i.rawName} stock ප්‍රමාණවත් නොවේ!`);
   }
+  rec.ingredients.forEach(i=>{const raw=D.rawMaterials.find(x=>x.id==i.rawId);if(raw)raw.qty-=i.qty*batches;});
+  const prod=D.products.find(x=>x.id==rec.prodId);
+  if(prod) prod.qty+=rec.batch*batches;
+  save(); renderRaw(); renderProducts(); renderDashboard(); previewRecipeUse(); checkNotifications();
+  alert(`✅ ${rec.prodName} ${rec.batch*batches} units නිෂ්පාදනය කළා!`);
+}
 
-  tbody.innerHTML = items.map(i => {
-    const profit = i.price - i.cost;
-    const badge = i.qty <= 0 ? 'stock-low' : i.qty <= i.min ? 'stock-low' : i.qty <= i.min*2 ? 'stock-med' : 'stock-ok';
-    const statusText = i.qty <= 0 ? '🚫 නිම්' : i.qty <= i.min ? '⚠️ අඩු' : i.qty <= i.min*2 ? '⚡ මධ්‍යම' : '✅ හොඳ';
-    return `<tr>
-      <td style="font-weight:600">${i.name}</td>
-      <td>${i.qty} ${i.unit}</td>
-      <td style="color:var(--gold)">${fmt(i.price)}</td>
-      <td style="color:${profit>=0?'var(--green)':'var(--red)'}">${fmt(profit)}</td>
-      <td><span class="stock-badge ${badge}">${statusText}</span></td>
-    </tr>`;
-  }).join('');
+// ============ SALES & RETURNS ============
+let srType='sale', srFilter='all';
+function setSRType(t) {
+  srType=t; const isSale=t==='sale';
+  document.getElementById('btn-sale').className='sr-type-btn'+(isSale?' sale-active':'');
+  document.getElementById('btn-return').className='sr-type-btn'+(!isSale?' return-active':'');
+  document.getElementById('sr-form-icon').textContent=isSale?'🛒':'↩️';
+  document.getElementById('sr-form-title').textContent=isSale?'නව විකිණීමක්':'නව ආපසු';
+  const b=document.getElementById('sr-form-badge'); b.className='badge '+(isSale?'badge-sale':'badge-return'); b.textContent=isSale?'SALE':'RETURN';
+  document.getElementById('sr-price-lbl').textContent=isSale?'මිල (Rs)':'ආපසු මිල (Rs)';
+  document.getElementById('sr-calc-total').style.color=isSale?'var(--green)':'var(--red)';
+  document.getElementById('sr-submit-btn').textContent=isSale?'🛒 සුරකින්න':'↩️ සුරකින්න';
+  populateSRPrice(); calcSRAmount();
+}
 
-  bars.innerHTML = items.map(i => {
-    const pct = i.min > 0 ? Math.min(100, Math.round((i.qty / (i.min * 3)) * 100)) : 100;
-    const col = i.qty <= i.min ? '#e05555' : i.qty <= i.min*2 ? '#f5c518' : '#3dba78';
-    const profitPct = i.price > 0 ? Math.round(((i.price - i.cost) / i.price) * 100) : 0;
-    return `<div style="background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:8px">
-      <div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:13px">
-        <span style="font-weight:600">${i.name}</span>
-        <span style="color:var(--gold)">${fmt(i.price)} / ${i.unit}</span>
+function populateSRDropdowns() {
+  const ps=document.getElementById('sr-product'); if(!ps) return;
+  const cur=ps.value; ps.innerHTML='<option value="">-- නිෂ්පාදනය --</option>';
+  D.products.forEach(p=>{const o=document.createElement('option');o.value=p.id;o.dataset.price=p.price;o.textContent=`${p.name} (${p.qty} ${p.unit})`;ps.appendChild(o);}); if(cur)ps.value=cur;
+  const cs=document.getElementById('sr-customer-sel'); if(!cs) return;
+  const ccur=cs.value; cs.innerHTML='<option value="">-- ගනුකරු --</option>';
+  D.customers.forEach(c=>{const o=document.createElement('option');o.value=c.id;o.textContent=c.name;cs.appendChild(o);}); if(ccur)cs.value=ccur;
+}
+
+function populateSRPrice() {
+  const sel=document.getElementById('sr-product'); if(!sel) return;
+  const opt=sel.options[sel.selectedIndex];
+  if(opt&&opt.dataset.price) { document.getElementById('sr-price').value=opt.dataset.price; calcSRAmount(); }
+}
+
+function calcSRAmount() {
+  const q=parseFloat(document.getElementById('sr-qty')?.value)||0, p=parseFloat(document.getElementById('sr-price')?.value)||0;
+  document.getElementById('sr-calc-disp').textContent=`${q} × Rs ${p.toFixed(2)}`;
+  document.getElementById('sr-calc-total').textContent=fmt(q*p);
+}
+
+function addSaleReturn() {
+  const prodId=parseInt(document.getElementById('sr-product').value);
+  const qty=parseFloat(document.getElementById('sr-qty').value);
+  const price=parseFloat(document.getElementById('sr-price').value);
+  const date=document.getElementById('sr-date').value||today();
+  const custId=parseInt(document.getElementById('sr-customer-sel').value)||null;
+  const note=document.getElementById('sr-note').value.trim();
+  if(!prodId||isNaN(qty)||qty<=0||isNaN(price)||price<=0) return alert('නිෂ්පාදනය, ප්‍රමාණය සහ මිල ලියන්න!');
+  const prod=D.products.find(p=>p.id===prodId); if(!prod) return;
+  if(srType==='sale'&&prod.qty<qty) return alert(`Stock ප්‍රමාණවත් නොවේ! ඇත: ${prod.qty} ${prod.unit}`);
+  if(srType==='sale') prod.qty-=qty; else prod.qty+=qty;
+  const cust=D.customers.find(c=>c.id===custId);
+  salesReturns.push({id:Date.now(),type:srType,prodId,prodName:prod.name,prodUnit:prod.unit,qty,price,total:qty*price,date,custId,custName:cust?cust.name:'',note});
+  save(); saveSR(); renderSR(); renderDashboard(); populateSRDropdowns(); checkNotifications();
+  document.getElementById('sr-qty').value=''; document.getElementById('sr-note').value=''; document.getElementById('sr-customer-sel').value='';
+}
+
+function deleteSR(id) {
+  if(!confirm('මකා දමන්නද?')) return;
+  const e=salesReturns.find(x=>x.id===id); if(e){const p=D.products.find(x=>x.id===e.prodId);if(p){if(e.type==='sale')p.qty+=e.qty;else p.qty=Math.max(0,p.qty-e.qty);save();}}
+  salesReturns=salesReturns.filter(x=>x.id!==id); saveSR(); renderSR(); populateSRDropdowns(); renderDashboard();
+}
+
+function setSRFilter(f,el) {
+  srFilter=f;
+  document.querySelectorAll('.sr-filter-pill').forEach(p=>p.className='sr-filter-pill');
+  el.classList.add(f==='all'?'pill-all':f==='sale'?'pill-sale':'pill-return');
+  renderSR();
+}
+
+function renderSR() {
+  const el=document.getElementById('sr-list'); if(!el) return;
+  const from=document.getElementById('sr-from')?.value, to=document.getElementById('sr-to')?.value;
+  let items=[...salesReturns].sort((a,b)=>new Date(b.date)-new Date(a.date));
+  if(srFilter!=='all') items=items.filter(x=>x.type===srFilter);
+  if(from) items=items.filter(x=>x.date>=from);
+  if(to) items=items.filter(x=>x.date<=to);
+  const allS=salesReturns.filter(x=>x.type==='sale').reduce((s,x)=>s+x.total,0);
+  const allR=salesReturns.filter(x=>x.type==='return').reduce((s,x)=>s+x.total,0);
+  const filtS=items.filter(x=>x.type==='sale').reduce((s,x)=>s+x.total,0);
+  const filtR=items.filter(x=>x.type==='return').reduce((s,x)=>s+x.total,0);
+  document.getElementById('sr-total-sales').textContent=fmt(allS);
+  document.getElementById('sr-total-returns').textContent=fmt(allR);
+  document.getElementById('sr-net-top').textContent=fmt(allS-allR);
+  document.getElementById('sr-net-sales').textContent=fmt(filtS);
+  document.getElementById('sr-net-rets').textContent=fmt(filtR);
+  const nf=document.getElementById('sr-net-final'); nf.textContent=fmt(filtS-filtR); nf.style.color=(filtS-filtR)>=0?'var(--gold)':'var(--red)';
+  if(!items.length){el.innerHTML=emptyState('🛒','ගනුදෙනු නොමැත');return;}
+  el.innerHTML=items.map(i=>`<div class="list-item ${i.type==='sale'?'sale-item':'return-item'}">
+    <div class="item-icon" style="background:${i.type==='sale'?'rgba(34,197,94,0.1)':'rgba(239,68,68,0.1)'}">${i.type==='sale'?'🛒':'↩️'}</div>
+    <div class="item-info">
+      <div class="item-name">${i.prodName} <span class="badge ${i.type==='sale'?'badge-sale':'badge-return'}">${i.type==='sale'?'SALE':'RETURN'}</span></div>
+      <div class="item-sub">${i.qty} ${i.prodUnit} · ${fmt(i.price)} · ${fmtD(i.date)}${i.custName?' · 👤 '+i.custName:''}${i.note?' · '+i.note:''}</div>
+      <div class="item-actions"><button class="btn btn-danger" onclick="deleteSR(${i.id})">🗑</button></div>
+    </div>
+    <div class="item-amount ${i.type==='sale'?'green':'red'}">${i.type==='sale'?'+':'-'}${fmt(i.total)}</div>
+  </div>`).join('');
+}
+
+// ============ CREDIT ============
+function populateCreditDropdowns() {
+  const sel=document.getElementById('cr-customer'); if(!sel) return;
+  const cur=sel.value; sel.innerHTML='<option value="">-- ගනුකරු --</option>';
+  D.customers.forEach(c=>{const o=document.createElement('option');o.value=c.id;o.textContent=c.name;sel.appendChild(o);}); if(cur)sel.value=cur;
+}
+
+function addCredit() {
+  const custId=parseInt(document.getElementById('cr-customer').value)||null;
+  const desc=document.getElementById('cr-desc').value.trim(), amount=parseFloat(document.getElementById('cr-amount').value), date=document.getElementById('cr-date').value||today(), due=document.getElementById('cr-due').value, note=document.getElementById('cr-note').value.trim();
+  if(!desc||!amount) return alert('විස්තරය සහ මුදල ලියන්න!');
+  const cust=D.customers.find(x=>x.id===custId);
+  credits.push({id:Date.now(),custId,custName:cust?cust.name:'නොදන්නා',desc,amount,balance:amount,paid:0,date,due,note,status:'pending'});
+  saveCR(); renderCredit(); renderDashboard(); checkNotifications();
+  document.getElementById('cr-desc').value=''; document.getElementById('cr-amount').value=''; document.getElementById('cr-due').value=''; document.getElementById('cr-note').value='';
+  document.getElementById('credit-form').classList.remove('open');
+}
+
+function payCredit(id,partial) {
+  const cr=credits.find(x=>x.id===id); if(!cr) return;
+  const amt=partial?parseFloat(prompt('ගෙවන මුදල (Rs):'))||0:cr.balance;
+  if(amt<=0||amt>cr.balance) return alert('වලංගු මුදලක් ලියන්න!');
+  cr.paid+=amt; cr.balance-=amt;
+  if(cr.balance<=0) { cr.balance=0; cr.status='paid'; }
+  saveCR(); renderCredit(); renderDashboard(); checkNotifications();
+}
+
+function deleteCredit(id) {
+  if(!confirm('මකා දමන්නද?')) return;
+  credits=credits.filter(x=>x.id!==id); saveCR(); renderCredit(); renderDashboard(); checkNotifications();
+}
+
+function renderCredit() {
+  const el=document.getElementById('credit-list'); if(!el) return;
+  const total=credits.reduce((s,x)=>s+x.amount,0);
+  const paid=credits.reduce((s,x)=>s+x.paid,0);
+  const bal=credits.reduce((s,x)=>s+x.balance,0);
+  document.getElementById('cr-total').textContent=fmt(total);
+  document.getElementById('cr-paid').textContent=fmt(paid);
+  document.getElementById('cr-balance').textContent=fmt(bal);
+  if(!credits.length){el.innerHTML=emptyState('💳','ණය ගනුදෙනු නොමැත');return;}
+  const now=today();
+  el.innerHTML=[...credits].reverse().map(c=>{
+    const isOver=c.due&&c.due<now&&c.status!=='paid';
+    const statusBadge=c.status==='paid'?'badge-paid':isOver?'badge-overdue':'badge-pending';
+    const statusTxt=c.status==='paid'?'ගෙවා ඇත':isOver?'කල් ඉකුත්':'ගෙවීමට ඇත';
+    const pct=c.amount>0?Math.round((c.paid/c.amount)*100):0;
+    return `<div class="list-item credit-item">
+      <div class="item-icon" style="background:rgba(249,115,22,0.1)">💳</div>
+      <div class="item-info">
+        <div class="item-name">${c.desc} <span class="badge ${statusBadge}">${statusTxt}</span></div>
+        <div class="item-sub">👤 ${c.custName} · ${fmtD(c.date)}${c.due?' · ගෙවිය: '+fmtD(c.due):''}</div>
+        <div class="bar-wrap"><div class="bar ${isOver?'bar-red':'bar-green'}" style="width:${pct}%"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:2px"><span>ගෙව්වා: ${fmt(c.paid)}</span><span>ශේෂය: ${fmt(c.balance)}</span></div>
+        <div class="item-actions">
+          ${c.status!=='paid'?`<button class="btn btn-green btn-sm" onclick="payCredit(${c.id},false)">✅ සම්පූර්ණ</button><button class="btn btn-primary btn-sm" onclick="payCredit(${c.id},true)">💵 අර්ධ</button>`:''}
+          <button class="btn btn-danger" onclick="deleteCredit(${c.id})">🗑</button>
+        </div>
       </div>
-      <div style="font-size:10px;color:var(--muted);margin-bottom:6px">
-        ලාභ margin: <span style="color:${profitPct>=0?'var(--green)':'var(--red)'}">${profitPct}%</span>
-        &nbsp;·&nbsp; නිෂ්පාදන වියදම: ${fmt(i.cost)}
-      </div>
-      <div class="salary-bar-wrap">
-        <div class="salary-bar" style="width:${pct}%;background:${col}"></div>
-      </div>
-      <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:4px">
-        <span>Stock: ${i.qty} ${i.unit} &nbsp;|&nbsp; Alert: ${i.min}</span>
-        <span>${pct}%</span>
-      </div>
+      <div class="item-amount ${c.status==='paid'?'green':isOver?'red':'orange'}">${fmt(c.balance)}</div>
     </div>`;
   }).join('');
 }
 
-// ======= SALARY =======
-function getSalaryNames() {
-  return JSON.parse(localStorage.getItem('bakery_salary_names') || '{}');
-}
-
+// ============ SALARY ============
 function saveNames() {
-  const names = {
-    chief: document.getElementById('name-chief').value.trim() || 'ප්‍රධාන සේවකයා',
-    h1: document.getElementById('name-h1').value.trim() || 'උදව් සේවකයා 1',
-    h2: document.getElementById('name-h2').value.trim() || 'උදව් සේවකයා 2',
-    extra: document.getElementById('name-extra').value.trim() || 'අමතර සේවකයා'
-  };
-  localStorage.setItem('bakery_salary_names', JSON.stringify(names));
-  renderSalary();
+  salaryNames={chief:document.getElementById('name-chief').value.trim()||'ප්‍රධාන',h1:document.getElementById('name-h1').value.trim()||'උදව් 1',h2:document.getElementById('name-h2').value.trim()||'උදව් 2',extra:document.getElementById('name-extra').value.trim()||'අමතර'};
+  localStorage.setItem('kvs_salary_names',JSON.stringify(salaryNames)); renderSalary();
 }
 
 function renderSalary() {
-  const selMonth = parseInt(document.getElementById('sal-month')?.value ?? new Date().getMonth());
-  const selYear = parseInt(document.getElementById('sal-year')?.value ?? new Date().getFullYear());
-  if (isNaN(selMonth) || isNaN(selYear)) return;
-
-  const names = getSalaryNames();
-
-  // Load name inputs
-  const nChief = document.getElementById('name-chief');
-  if (nChief && !nChief.value) nChief.value = names.chief || '';
-  const nH1 = document.getElementById('name-h1');
-  if (nH1 && !nH1.value) nH1.value = names.h1 || '';
-  const nH2 = document.getElementById('name-h2');
-  if (nH2 && !nH2.value) nH2.value = names.h2 || '';
-  const nExtra = document.getElementById('name-extra');
-  if (nExtra && !nExtra.value) nExtra.value = names.extra || '';
-
-  // Calc profit for selected month/year
-  const monthInc = data.income.filter(x => {
-    const d = new Date(x.date);
-    return d.getMonth() === selMonth && d.getFullYear() === selYear;
-  }).reduce((s,x) => s+x.amount, 0);
-
-  const monthExp = data.expenses.filter(x => {
-    const d = new Date(x.date);
-    return d.getMonth() === selMonth && d.getFullYear() === selYear;
-  }).reduce((s,x) => s+x.amount, 0);
-
-  const profit = monthInc - monthExp;
-  const pool = profit > 0 ? profit * 0.5 : 0;
-
-  // Individual amounts
-  const chiefSal = pool * 0.50;
-  const h1Sal = pool * 0.20;
-  const h2Sal = pool * 0.20;
-  const extraSal = pool * 0.10;
-
-  const profEl = document.getElementById('sal-total-profit');
-  const poolEl = document.getElementById('sal-pool');
-  if (profEl) { profEl.textContent = fmt(profit); profEl.style.color = profit >= 0 ? 'var(--gold)' : 'var(--red)'; }
-  if (poolEl) poolEl.textContent = fmt(pool);
-
-  const workers = [
-    { key:'chief', name: names.chief||'ප්‍රධාන සේවකයා', role:'ප්‍රධාන සේවකයා', icon:'👑', type:'chief', pct:50, sal:chiefSal, barClass:'bar-chief', pctClass:'chief-color', avatarClass:'avatar-chief' },
-    { key:'h1', name: names.h1||'උදව් සේවකයා 1', role:'උදව් සේවකයා', icon:'🔵', type:'helper', pct:20, sal:h1Sal, barClass:'bar-helper', pctClass:'helper-color', avatarClass:'avatar-helper' },
-    { key:'h2', name: names.h2||'උදව් සේවකයා 2', role:'උදව් සේවකයා', icon:'🔵', type:'helper', pct:20, sal:h2Sal, barClass:'bar-helper', pctClass:'helper-color', avatarClass:'avatar-helper' },
-    { key:'extra', name: names.extra||'අමතර සේවකයා', role:'අමතර සේවකයා', icon:'🟣', type:'extra', pct:10, sal:extraSal, barClass:'bar-extra', pctClass:'extra-color', avatarClass:'avatar-extra' },
+  const m=parseInt(document.getElementById('sal-month')?.value??new Date().getMonth());
+  const y=parseInt(document.getElementById('sal-year')?.value??new Date().getFullYear());
+  if(isNaN(m)||isNaN(y)) return;
+  ['name-chief','name-h1','name-h2','name-extra'].forEach((id,i)=>{ const el=document.getElementById(id); if(el&&!el.value) el.value=[salaryNames.chief,salaryNames.h1,salaryNames.h2,salaryNames.extra][i]||''; });
+  const inc=D.income.filter(x=>{const d=new Date(x.date);return d.getMonth()===m&&d.getFullYear()===y;}).reduce((s,x)=>s+x.amount,0);
+  const exp=D.expenses.filter(x=>{const d=new Date(x.date);return d.getMonth()===m&&d.getFullYear()===y;}).reduce((s,x)=>s+x.amount,0);
+  const profit=inc-exp, pool=profit>0?profit*0.5:0;
+  document.getElementById('sal-profit').textContent=fmt(profit);
+  document.getElementById('sal-pool').textContent=fmt(pool);
+  const workers=[
+    {key:'chief',name:salaryNames.chief,role:'ප්‍රධාන',icon:'👑',type:'chief',pct:50,sal:pool*0.5,barClass:'bar-gold',pctClass:'chief-color',avatarClass:'avatar-chief'},
+    {key:'h1',name:salaryNames.h1,role:'උදව්',icon:'🔵',type:'helper',pct:20,sal:pool*0.2,barClass:'bar-blue',pctClass:'helper-color',avatarClass:'avatar-helper'},
+    {key:'h2',name:salaryNames.h2,role:'උදව්',icon:'🔵',type:'helper',pct:20,sal:pool*0.2,barClass:'bar-blue',pctClass:'helper-color',avatarClass:'avatar-helper'},
+    {key:'extra',name:salaryNames.extra,role:'අමතර',icon:'🟣',type:'extra',pct:10,sal:pool*0.1,barClass:'bar-purple',pctClass:'extra-color',avatarClass:'avatar-extra'},
   ];
-
-  const cards = document.getElementById('salary-cards');
-  if (!cards) return;
-
-  if (profit <= 0) {
-    cards.innerHTML = `<div class="warning-banner">⚠️ මෙම මාසය ලාභයක් නොමැත. වැටුප් ගෙවිය නොහැක.</div>`;
-  } else {
-    cards.innerHTML = workers.map(w => `
-      <div class="worker-card ${w.type}">
-        <span class="worker-badge badge-${w.type}">${w.icon} ${w.role}</span>
-        <div class="worker-name-row">
-          <div class="worker-avatar ${w.avatarClass}" style="font-size:22px">${w.icon}</div>
-          <div class="worker-info">
-            <div class="worker-name-text">${w.name}</div>
-            <div class="worker-role">ලාභ pool එකෙන් ${w.pct}%</div>
-          </div>
-          <div class="worker-pct ${w.pctClass}">${w.pct}%</div>
-        </div>
-        <div class="salary-bar-wrap">
-          <div class="salary-bar ${w.barClass}" style="width:${w.pct}%"></div>
-        </div>
-        <div class="worker-salary-amount">
-          <span class="worker-salary-label">💵 මාසික වැටුප</span>
-          <span class="worker-salary-val ${w.pctClass}">${fmt(w.sal)}</span>
-        </div>
-      </div>`).join('');
-  }
-
-  // History
-  renderSalaryHistory();
+  const cards=document.getElementById('salary-cards'); if(!cards) return;
+  if(profit<=0){cards.innerHTML=`<div class="warning-banner">⚠️ ලාභයක් නොමැති නිසා වැටුප් ගෙවිය නොහැක.</div>`;return;}
+  cards.innerHTML=workers.map(w=>`<div class="worker-card ${w.type}">
+    <span class="worker-badge badge-${w.type==='chief'?'chief':w.type==='helper'?'helper':'extra-w'}">${w.icon} ${w.role}</span>
+    <div class="worker-name-row">
+      <div class="worker-avatar ${w.avatarClass}">${w.icon}</div>
+      <div class="worker-info"><div class="worker-name-text">${w.name}</div><div class="worker-role">${w.pct}% ලබා ගනී</div></div>
+      <div class="worker-pct ${w.pctClass}">${w.pct}%</div>
+    </div>
+    <div class="bar-wrap"><div class="bar ${w.barClass}" style="width:${w.pct}%"></div></div>
+    <div class="worker-salary-amount"><span class="worker-salary-label">💵 වැටුප</span><span class="worker-salary-val ${w.pctClass}">${fmt(w.sal)}</span></div>
+  </div>`).join('');
+  renderSalaryHist();
 }
 
-function recordSalaryPayment() {
-  const selMonth = parseInt(document.getElementById('sal-month').value);
-  const selYear = parseInt(document.getElementById('sal-year').value);
-  const names = getSalaryNames();
-
-  const monthInc = data.income.filter(x => { const d=new Date(x.date); return d.getMonth()===selMonth&&d.getFullYear()===selYear; }).reduce((s,x)=>s+x.amount,0);
-  const monthExp = data.expenses.filter(x => { const d=new Date(x.date); return d.getMonth()===selMonth&&d.getFullYear()===selYear; }).reduce((s,x)=>s+x.amount,0);
-  const profit = monthInc - monthExp;
-  if (profit <= 0) { alert('ලාභයක් නොමැති නිසා record කළ නොහැක!'); return; }
-
-  const pool = profit * 0.5;
-  const months = ['ජනවාරි','පෙබරවාරි','මාර්තු','අප්‍රේල්','මැයි','ජූනි','ජූලි','අගෝස්තු','සැප්තැම්බර්','ඔක්තෝබර්','නොවැම්බර්','දෙසැම්බර්'];
-
-  const hist = JSON.parse(localStorage.getItem('bakery_salary_hist') || '[]');
-  // Check if already recorded
-  if (hist.find(h => h.month === selMonth && h.year === selYear)) {
-    if (!confirm('මෙම මාසය දැනටමත් record කර ඇත. නැවත save කරන්නද?')) return;
-  }
-  hist.push({
-    id: Date.now(),
-    month: selMonth, year: selYear,
-    monthLabel: months[selMonth] + ' ' + selYear,
-    profit, pool,
-    workers: {
-      chief: { name: names.chief||'ප්‍රධාන සේවකයා', sal: pool*0.5 },
-      h1: { name: names.h1||'උදව් 1', sal: pool*0.2 },
-      h2: { name: names.h2||'උදව් 2', sal: pool*0.2 },
-      extra: { name: names.extra||'අමතර', sal: pool*0.1 }
-    }
-  });
-  localStorage.setItem('bakery_salary_hist', JSON.stringify(hist));
-  renderSalaryHistory();
-  alert('✅ වැටුප් සාර්ථකව record කරන ලදී!');
+function recordSalary() {
+  const m=parseInt(document.getElementById('sal-month').value), y=parseInt(document.getElementById('sal-year').value);
+  const inc=D.income.filter(x=>{const d=new Date(x.date);return d.getMonth()===m&&d.getFullYear()===y;}).reduce((s,x)=>s+x.amount,0);
+  const exp=D.expenses.filter(x=>{const d=new Date(x.date);return d.getMonth()===m&&d.getFullYear()===y;}).reduce((s,x)=>s+x.amount,0);
+  const profit=inc-exp; if(profit<=0) return alert('ලාභයක් නොමැත!');
+  const pool=profit*0.5;
+  if(salaryHist.find(h=>h.month===m&&h.year===y)&&!confirm('දැනටමත් record ඇත. නැවත?')) return;
+  salaryHist.push({id:Date.now(),month:m,year:y,label:fmtM[m]+' '+y,profit,pool,workers:{chief:{name:salaryNames.chief,sal:pool*0.5},h1:{name:salaryNames.h1,sal:pool*0.2},h2:{name:salaryNames.h2,sal:pool*0.2},extra:{name:salaryNames.extra,sal:pool*0.1}}});
+  localStorage.setItem('kvs_salary_hist',JSON.stringify(salaryHist)); renderSalaryHist(); alert('✅ සාර්ථකව record කළා!');
 }
 
-function renderSalaryHistory() {
-  const el = document.getElementById('salary-history');
-  if (!el) return;
-  const hist = JSON.parse(localStorage.getItem('bakery_salary_hist') || '[]');
-  if (!hist.length) { el.innerHTML = emptyState('📋', 'වැටුප් ඉතිහාසය නොමැත'); return; }
-  el.innerHTML = [...hist].reverse().map(h => `
-    <div class="salary-hist-item">
-      <div class="salary-hist-header">
-        <span>📅 ${h.monthLabel}</span>
-        <span style="color:var(--gold)">${fmt(h.pool)}</span>
-      </div>
-      <div class="salary-hist-row"><span>👑 ${h.workers.chief.name}</span><span style="color:var(--gold)">${fmt(h.workers.chief.sal)}</span></div>
-      <div class="salary-hist-row"><span>🔵 ${h.workers.h1.name}</span><span style="color:var(--blue)">${fmt(h.workers.h1.sal)}</span></div>
-      <div class="salary-hist-row"><span>🔵 ${h.workers.h2.name}</span><span style="color:var(--blue)">${fmt(h.workers.h2.sal)}</span></div>
-      <div class="salary-hist-row"><span>🟣 ${h.workers.extra.name}</span><span style="color:#a06ee8">${fmt(h.workers.extra.sal)}</span></div>
-    </div>`).join('');
-}
-
-// ======= RENDER ALL =======
-function render() {
-  renderDashboard();
-  renderIncome();
-  renderExpense();
-  renderAssets();
-  renderLiabilities();
-  renderEquity();
-  renderRaw();
-  renderProducts();
-  renderRawReport();
-  renderProdReport();
-  renderSalary();
-}
-
-// ======= INIT =======
-document.getElementById('inc-date').value = today();
-document.getElementById('exp-date').value = today();
-document.getElementById('ast-date').value = today();
-document.getElementById('lib-date').value = today();
-document.getElementById('eqt-date').value = today();
-
-const repFrom = new Date();
-repFrom.setDate(1);
-document.getElementById('rep-from').value = repFrom.toISOString().split('T')[0];
-document.getElementById('rep-to').value = today();
-
-// Salary month/year init
-const nowDate = new Date();
-document.getElementById('sal-month').value = nowDate.getMonth();
-document.getElementById('sal-year').value = nowDate.getFullYear();
-document.getElementById('sal-month').addEventListener('change', renderSalary);
-document.getElementById('sal-year').addEventListener('change', renderSalary);
-
-render();
-</script>
-</body>
-</html>
+function renderSalaryHist() {
+  const el=document.getElementById('salary-history'); if(!el) return;
+  if(!salaryHist.length){el.innerHTML=emptyState('📋','ඉතිහාසය නොමැත');return;}
+  el.innerHTML=[...salaryHist].reverse().map(h=>`<div class="salary-hist-item">
+    <div class="salary-hist-header"><span>📅 ${h.label}</span><span style="color:var(--gold)">${fmt(h.pool)}</span></div>
+    <div class="salary-hist-row"><span>👑 ${h.workers.chief.name}</span><span style="color:var(--gold)">${fmt(h.workers.chief.sal)}</span></div>
+    <div class="salary-hist-row"><span>🔵 ${h.workers.h1.name}</span><span style="color:var(--accent2)">${fmt(h.workers.h1.sal)}</span></div>
+    <div class="salary-hist-row"><span>🔵 ${h.workers.h2.name}</span><span style="color:var(--accent2)">${fmt(h.workers.h2.sal)}</span></div>
+    <div class="salary-hist-row"><span>🟣 ${h.workers.extra.name}</span><span style="color:var(--purple)">${fmt(h.workers.extra.sal)}</span></div>
+  </di
